@@ -6,8 +6,7 @@ tags:
   - Computational Materials Science
 ---
 
-《计算材料学》学习笔记
-===============
+# 《计算材料学》学习笔记
 
 <div style="color:black; background-color:#FFF3E9; border: 1px solid #FFE0C3; border-radius: 10px; margin-bottom:0rem">
     <p style="margin:1rem; padding-left: 1rem; line-height: 2.5;">
