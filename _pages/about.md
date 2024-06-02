@@ -10,3 +10,5 @@ Welcome to my blog! My name is Wang Jianghai. I am currently a postgraduate stud
 
 I will share my study and life experience here, I hope you can find resonance with me here!
 ---
+
+This page is still under construction.

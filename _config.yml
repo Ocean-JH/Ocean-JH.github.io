@@ -10,7 +10,7 @@
 locale                   : "en-US"
 title                    : "Jianghai Wang"
 title_separator          : "-"
-name                     : &name "Jianghai Wang (王江海)"
+name                     : &name "Jianghai Wang"
 description              : &description "Postgraduate in Beihang University"
 url                      : https://ocean-jh.github.io/ # the base hostname & protocol for your site e.g. "https://ocean-jh.github.io/"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -22,9 +22,9 @@ repository               : "Ocean-JH/Ocean-JH.github.io"
 author:
   # Biographic information
   avatar           : "jhwang.png"
-  name             : "Jianghai Wang"
+  name             : "Jianghai Wang(王江海)"
   pronouns         : # example: "she/her"  
-  bio              : "Short biography for the left-hand sidebar"
+  bio              : "Graduate student in Computational Materials Science"
   location         : "Beijing, China"
   employer         : "Beihang University"
   uri              : # URL
@@ -281,7 +281,7 @@ sass:
 permalink: /:categories/:title/
 # paginate: 5 # amount of posts to show
 # paginate_path: /page:num/
-timezone: America/Los_Angeles # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Asia/Shanghai # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Plugins
