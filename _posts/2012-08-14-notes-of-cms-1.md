@@ -1,5 +1,5 @@
 ---
-title: 'Notes of CMS 1'
+title: 'Notes of CMS Principle 1'
 date: 2024-03-10
 tags:
   - notes
@@ -7,23 +7,6 @@ tags:
 ---
 
 # 《计算材料学》学习笔记
-
-<div style="color:black; background-color:#FFF3E9; border: 1px solid #FFE0C3; border-radius: 10px; margin-bottom:0rem">
-    <p style="margin:1rem; padding-left: 1rem; line-height: 2.5;">
-        ©️ <b><i>Copyright 2024 @ Authors</i></b><br/>
-        <i>作者：
-            <b>
-            <a href="mailto:your_address@email.com">王江海 📨 </a>
-            </b>
-        </i>
-        <br/>
-        <i>日期：2024-03</i><br/>
-        <i>共享协议：</a>本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。</i><br/>
-        <i>快速开始：点击上方的</i> <span style="background-color:rgb(85, 91, 228); color:white; padding: 3px; border-radius: 5px;box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3); font-size:0.75rem;">开始连接</span> <i>按钮，选择 <b><u>bohrium-notebook:2023-04-07</u>镜像</b> 和任意配置机型即可开始。
-    </p>
-</div>
-
-
 
 ## 计算方法分类
 
