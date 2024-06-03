@@ -10,7 +10,7 @@ tags:
 
 <div style="color:black; background-color:#FFF3E9; border: 1px solid #FFE0C3; border-radius: 10px; margin-bottom:0rem">
     <p style="margin:1rem; padding-left: 1rem; line-height: 2.5;">
-        ©️ <b><i>Copyright 2024 @ Author</i></b><br/>
+        ©️ <b><i>Copyright 2024 @ Jianghai Wang</i></b><br/>
         <i>Author：
             <b>
             <a href="mailto:your_address@email.com">Jianghai Wang 📨 </a>
@@ -18,7 +18,7 @@ tags:
         </i>
         <br/>
         <i>Date：2024-05-07</i><br/>
-        <i>License：</a><a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></i><br/>
+        <i>License：<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></i><br/>
     </p>
 </div>
 

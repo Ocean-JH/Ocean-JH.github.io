@@ -1,5 +1,5 @@
 ---
-title: 'Blog Post number 3'
+title: 'Future plan'
 date: 2099-08-16
 tags:
   - future plan
