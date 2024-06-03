@@ -13,4 +13,4 @@ Welcome to my blog! My name is Wang Jianghai(王江海, which means *ocean*  in 
 I will share my study and life experience here, I hope you can find resonance with me here!
 
 
-Feel free to [:e-mail:contact me](mailto:wang_jianghai@buaa.edu.cn) at any time if you find any errors in the content, or if you have suggestions for improvement!
+Feel free to [contact me](mailto:wang_jianghai@buaa.edu.cn) at any time if you find any errors in the content, or if you have suggestions for improvement!
