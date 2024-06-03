@@ -23,7 +23,7 @@ tags:
 </div>
 
 >**算法原理**：
-> - [《计算材料学》（分子动力学）算法原理](https://bohrium.dp.tech/notebooks/52743861357)
+> - [《计算材料学》（分子动力学）算法原理](/_posts/2024-03-10-notes-of-cms-principle.md)
 
 # LAMMPS
 

@@ -23,9 +23,14 @@ tags:
 
 > **代码实现**：
 > 
-> - [Python Implementation: ***Lennard-Jones Potential***](https://nb.bohrium.dp.tech/detail/35387325971)
-> - [Python Implementation: ***Optimization Algorithms for Molecular Dynamics***](https://nb.bohrium.dp.tech/detail/36773325971)
-> - [Python Implementation: ***Integration Algorithms for Molecular Dynamics***](https://nb.bohrium.dp.tech/detail/49396512168)
+> - [Python Implementation: ***Lennard-Jones Potential***](https://github.com/Ocean-JH/CMS_Notes/blob/main/Molecular%20Dynamics/notebook/Python%20Implementation%EF%BC%9ALennard-Jones%20Potential.ipynb)
+> - [Python Implementation: ***Optimization Algorithms for Molecular Dynamics***](https://github.com/Ocean-JH/CMS_Notes/blob/main/Molecular%20Dynamics/notebook/Python%20Implementation%EF%BC%9AOptimization%20Algorithms%20for%20Molecular%20Dynamics.ipynb)
+> - [Python Implementation: ***Integration Algorithms for Molecular Dynamics***](https://github.com/Ocean-JH/CMS_Notes/blob/main/Molecular%20Dynamics/notebook/Python%20Implementation%EF%BC%9AIntegration%20Algorithms%20for%20Molecular%20Dynamics.ipynb)
+> 
+> **LAMMPS实例**：
+> - [《计算材料学》（分子动力学）LAMMPS实例](/_posts/2024-05-07-notes-of-cms-practice.md)
+
+
 
 # 计算材料学简介
 
