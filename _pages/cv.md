@@ -9,56 +9,32 @@ redirect_from:
 
 {% include base_path %}
 
+You can [get the PDF](../files/Curriculum_Vitae.pdf) directly.
+
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+- M.S. in Beihang University, Jan. 2025 (expected)
+- B.S. in Xiamen University, Jun. 2022
 
-Work experience
-======
-* Spring 2024: Academic Pages Collaborator
-  * Github University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+Projects
+=====
+**Crystal Structure Prediction of Ge-Sb-Te System Based on Genetic Algorithm**
+*[ Aug 2023 - Aug 2024 ]*
+Utilizing a combination of genetic algorithms and first-principles methods, I conducted crystal structure prediction studies on the Ge-Sb-Te system, a pivotal phase change material system, to uncover its inherent complexities and expand our knowledge of its configuration space.
+The objective was to enhance comprehension of this intriguing system and potentially identify novel structures or compositions conducive to phase-change storage applications.
 
-* Fall 2015: Research Assistant
-  * Github University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
-
-* Summer 2015: Research Assistant
-  * Github University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+**Machine learning potential accelerates crystal structure prediction**
+*[ Jan 2024 – Sep 2024 ]*
+In this work, I have developed a framework combining genetic algorithm, and pre-trained potential, which can effectively locate the ground-state or meta-stable states of the relatively large/complex systems. Utilizing machine learning potentials (e.g., general pre-training potentials CHGNet, MACE, MEG, etc.) as energy evaluators instead of first principles methods can significantly expedite the process of crystal structure prediction and more effectively probe the potential energy surface.
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
-
-Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Service and leadership
-======
-* Currently signed in to 43 different slack teams
+- VASP
+- LAMMPS
+- Crystal Structure Prediction
+  - USPEX
+  - CALYPSO
+- Programming
+  - python
+  - html
+  - bash
