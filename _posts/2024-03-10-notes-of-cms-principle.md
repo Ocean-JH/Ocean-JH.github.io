@@ -7,6 +7,8 @@ tags:
   - Python
 ---
 
+This is the **Principle** part of ***Computational Materials Science: From Algorithm principle to Code Implementation***.
+
 <div style="color:black; background-color:#FFF3E9; border: 1px solid #FFE0C3; border-radius: 10px; margin-bottom:0rem">
     <p style="margin:1rem; padding-left: 1rem; line-height: 2.5;">
         ©️ <b><i>Copyright 2024 @ Jianghai Wang</i></b><br/>
