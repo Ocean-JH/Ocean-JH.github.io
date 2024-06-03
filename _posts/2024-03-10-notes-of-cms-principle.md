@@ -1820,7 +1820,7 @@ $$
 \begin{gathered}
 E=\sum_{i}E_{i}={\frac{1}{2}}\sum_{i\neq j}V_{ij} \\
 V_{ij}=f_{C}(r_{ij})[f_{R}(r_{ij})+b_{ij}f_{A}(r_{ij})]\\
-{{b_{ij}=\left(1+\beta^{n}\zeta_{ij}^{n}\right)^{-\frac{1}{2n}}}}\\{\downarrow} \\
+{b_{ij}=\left(1+\beta^{n}\zeta_{ij}^{n}\right)^{-\frac{1}{2n}}}\\{\downarrow} \\
 E_{b} =\sum_{i}\sum_{j\neq i}[V_{R}(r_{ij})-\bar{B}_{ij}V_{A}(r_{ij})]\\{\downarrow}\\
 E=\frac{1}{2}\sum_{i}\sum_{j\ne i}\left[E_{ij}^\text{REBO}{ + }E_{ij}^\text{LJ}{ + }\sum_{k\ne i,j}\sum_{l\ne i,j,k}E_{kijl}^\text{tors}\right]
 \end{gathered}
