@@ -1,6 +1,6 @@
 ---
 title: 'Notes of CMS Principle 1'
-date: 2024-03-10
+date: 2024-03-12
 tags:
   - notes
   - Computational Materials Science
