@@ -6,7 +6,7 @@ tags:
   - tauc plot
 ---
 
-# Determining optical bandgap with Tauc Plot
+**实验**上主要采用Tauc Plot方法确定材料的光学带隙，**理论计算**上主要通过*[介电函数]虚部的第一个吸收峰*确定材料的光学带隙。
 
 >  A [**Tauc plot**](https://en.wikipedia.org/wiki/Tauc_plot) is used to determine the **optical bandgap**, or Tauc bandgap, of either **disordered** or **amorphous** semiconductors.
 > 
@@ -23,7 +23,3 @@ tags:
 > - $r$ = 3 for indirect [forbidden](https://en.wikipedia.org/wiki/Forbidden_mechanism "Forbidden mechanism") transitions
 > 
 > Again, the resulting plot (quite often, incorrectly identified as a Tauc plot) has a distinct linear region that, extrapolated to the abscissa, yields the energy of the optical bandgap of the material.
-
-
-
-**实验**上主要采用Tauc Plot方法确定材料的光学带隙，**计算**上未见使用该方法，主要通过介电函数虚部的第一个吸收峰确定材料的光学带隙。

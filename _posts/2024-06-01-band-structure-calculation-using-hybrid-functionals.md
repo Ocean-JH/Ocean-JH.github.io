@@ -7,7 +7,7 @@ tags:
   - hybrid functional
 ---
 
-# [Band-structure calculation using hybrid functionals](https://www.vasp.at/wiki/index.php/Band-structure_calculation_using_hybrid_functionals)
+采用杂化泛函不能使用ICHARG=11，即只能进行自洽计算。
 
 > **a significant difference between hybrid band-structure calculations and DFT band-structure calculations**:
 > 
@@ -15,4 +15,5 @@ tags:
 > 
 > **Warning:** The electronic charge density must not be fixed for any hybrid calculation, i.e., never set [ICHARG](https://www.vasp.at/wiki/index.php/ICHARG "ICHARG")=11!
 
-根据以上信息，采用杂化泛函不能使用ICHARG=11，即只能做自洽计算。
+
+*Ref*: [Band-structure calculation using hybrid functionals](https://www.vasp.at/wiki/index.php/Band-structure_calculation_using_hybrid_functionals)
