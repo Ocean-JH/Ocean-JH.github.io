@@ -8,7 +8,7 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Jianghai Wang"
+title                    : "Ocean"
 title_separator          : "-"
 name                     : &name "Jianghai Wang"
 description              : &description "Postgraduate in Beihang University"
@@ -286,6 +286,7 @@ timezone: Asia/Shanghai # http://en.wikipedia.org/wiki/List_of_tz_database_time_
 
 # Plugins
 plugins:
+  - jekyll-archives
   - jekyll-paginate
   - jekyll-sitemap
   - jekyll-gist
@@ -316,17 +317,18 @@ category_archive:
 tag_archive:
   type: liquid
   path: /tags/
-# https://github.com/jekyll/jekyll-archives
-# jekyll-archives:
-#   enabled:
-#     - categories
-#     - tags
-#   layouts:
-#     category: archive-taxonomy
-#     tag: archive-taxonomy
-#   permalinks:
-#     category: /categories/:name/
-#     tag: /tags/:name/
+
+# jekyll-archives
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layouts:
+    category: archive-taxonomy
+    tag: archive-taxonomy
+  permalinks:
+    category: /categories/:name/
+    tag: /tags/:name/
 
 
 # HTML Compression
