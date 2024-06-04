@@ -77,7 +77,7 @@ $$
 
 > - [Interatomic Potentials - LAMMPS Tube](https://lammpstube.com/mdpotentials/)
 > 
-> 不同元素之间的L-J势参数可以由以下方式计算得到*：
+> 不同元素之间的L-J势参数可以由以下方式计算得到：
 > 
 > $$
 \sigma_{AB}=\frac{(\sigma_{AA}+\sigma_{BB})}{2}\\
