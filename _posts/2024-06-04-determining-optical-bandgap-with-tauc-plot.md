@@ -6,7 +6,7 @@ tags:
   - tauc plot
 ---
 
-**实验**上主要采用Tauc Plot方法确定材料的光学带隙，**理论计算**上主要通过*[介电函数]虚部的第一个吸收峰*确定材料的光学带隙。
+**实验**上主要采用Tauc Plot方法确定材料的光学带隙，**理论计算**上主要通过*介电函数虚部第一个吸收峰*确定材料的光学带隙。
 
 >  A [**Tauc plot**](https://en.wikipedia.org/wiki/Tauc_plot) is used to determine the **optical bandgap**, or Tauc bandgap, of either **disordered** or **amorphous** semiconductors.
 > 
