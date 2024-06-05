@@ -1,6 +1,6 @@
 ---
 title: "Crystal Structure Prediction"
-excerpt: "Explore the configuration space of Ge-Sb-Te system using genetic algorithm , aiming to find new (meta)stable materials.<br/><img src='/images/potential energy surface.png'>"
+excerpt: "Explore the configuration space of Ge-Sb-Te system using genetic algorithm , aiming to find new (meta)stable materials.<br/><img src='/images/potential-energy-surface.png'>"
 collection: portfolio
 ---
 
@@ -10,14 +10,12 @@ Utilizing a combination of genetic algorithms and first-principles methods, I co
 
 In this work, ***crossover*** and a variety of ***mutation*** operators are used to improve the sampling efficiency of the algorithm, including *mutation*, *permutation*, *transmutation*, etc. The energy above hull($E_{hull}$) is used as **Fitness function** for population iteration. After 50 generations of iteration, the resulting candidate structures are sorted by fitness, and then further validated according to the following carefully considered screening criteria:
 
-1. Structures with formation energy($E_{form}$) < 0 and energy above hull($E_{hull}$) < 0.1 eV/atom is selected to calculate the *elastic constant*, and the stability of the structure is further determined by [***Born elastic criterion***] and frequency;
+1. Structures with formation energy($E_{form}$) < 0 and energy above hull($E_{hull}$) < 0.1 eV/atom is selected to calculate the *elastic constant*, and the stability of the structure is further determined by [***Born elastic criterion***](https://journals.aps.org/prb/abstract/10.1103/PhysRevB.90.224104) (*Phys. Rev. B* **90**, 224104 (2014)) and frequency;
 2. Structures is preliminary deduplicated by the number of atoms of each element and space group;
 3. Calculate the *phonon spectrum /AIMD* of the structures to determine the dynamic stability of the material;
 4. After the above screening steps, *Born effective charge*, *density of state*, *band structure*, *dielectric function* and *transport properties* of the remaining structure are further analyzed to identify potential application scenarios.
 
 The objective of this work is to enhance comprehension of this intriguing system and potentially identify novel structures or compositions conducive to phase-change storage applications.
-
-
 
 # 2. CSP with structural prototype
 
