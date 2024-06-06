@@ -28,3 +28,7 @@ tags:
 - [matminer (Materials Data Mining)](https://hackingmaterials.lbl.gov/matminer/)
 
 - [DScribe](https://singroup.github.io/dscribe/latest/)
+
+- [Materials Cloud](https://www.materialscloud.org/home)
+  
+  - [SeeK-path: the k-path finder and visualizer](https://tools.materialscloud.org/seekpath/)

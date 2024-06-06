@@ -5,9 +5,18 @@ tags:
   - unit
 ---
 
->  Unit conversions commonly used in ***computational materials science***
+# Unit conversions commonly used in ***computational materials science***
 
-*Notice*: The following is mainly based on the [content](http://greif.geo.berkeley.edu/~driver/conversions.html) of [Prof. Burkhard Militzer at UC Berkeley](http://greif.geo.berkeley.edu/), with some corrections.
+|      | 国际单位制                     | 原子单位制                                                                                           |
+|:----:|:-------------------------:|:-----------------------------------------------------------------------------------------------:|
+| 质量   | $kg$                      | $m_e=9.1094\times10^{-31}\:kg$                                                                  |
+| 电荷   | $C$                       | $e=1.6022\times10^{-19}\:C$                                                                     |
+| 角动量  | $kg\cdot m^2\cdot s^{-1}$ | $\hbar=1.0546\times10^{-43}\:J\cdot s$                                                          |
+| 介电常数 | $F\cdot m^{-1}$           | $4\pi\varepsilon_0=1.1127\times10^{-10}\:F\cdot m^{-1}$                                         |
+| 长度   | $m$                       | $a_0=\frac{4\pi\varepsilon_0\hbar^2}{m_ee^2}=5.2918\times10^{-11} \:m$                          |
+| 能量   | $J$                       | $\mathscr{E}_a=1 \:Hartree = \frac{m_ee^2}{16\pi^2\varepsilon^2\hbar}=4.3597\times10^{-18} \:J$ |
+
+> *Notice*: The following is mainly based on the [content](http://greif.geo.berkeley.edu/~driver/conversions.html) of [Prof. Burkhard Militzer at UC Berkeley](http://greif.geo.berkeley.edu/), with some corrections.
 
 ## Pressure:
 
@@ -29,8 +38,6 @@ $$
 & 1 \:Ha/Bohr = 51.42208619083232 \:eV/\AA
 \end{aligned}
 $$
-
-
 
 ## Energy:
 
