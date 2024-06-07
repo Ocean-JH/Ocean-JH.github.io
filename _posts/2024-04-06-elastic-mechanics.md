@@ -1,5 +1,5 @@
 ---
-title: 'Elastic mechanics'
+title: 'Elastic Mechanics'
 date: 2024-04-06
 tags:
   - VASP
@@ -31,11 +31,7 @@ $$
 
 可以证明：$C_{ij}=C_{ji}$，因此独立弹性常数最多有**21**个。**独立弹性常数的个数取决于晶体的对称性。对称性越低，独立弹性常数越多。**
 
-
-
 $S_{ij}$为**柔度张量**的分量，对应于弹性张量的逆矩阵，即$[ S_{ij} ] = [ C_{ij} ]^{-1}$，单位为$GPa^{-1}$。
-
-
 
 # Born弹性稳定性判据
 
@@ -87,8 +83,6 @@ Not shown here given the complexity of the equations and solution.
 
 > You can refer to [this article](http://www.gywlxb.cn/cn/article/doi/10.11858/gywlxb.20220575) for details.
 
-
-
 # [弹性模量（Elastic modulus）](https://en.wikipedia.org/wiki/Elastic_modulus)
 
 ## 体积模量 & 剪切模量
@@ -136,6 +130,58 @@ $$
 $$
 \begin{aligned}E&=\frac{9KG}{3K+G}\\~\\\nu&=\frac{3K-2G}{2(3K+G)}\end{aligned}
 $$
+
+
+
+# VASP计算
+
+VASP可以计算弹性常数，进而得到材料的力学性能。
+*关键参数*：
+
+- [IBRION](https://www.vasp.at/wiki/index.php/IBRION)
+
+- [ISIF](https://www.vasp.at/wiki/index.php/ISIF)
+
+- [NFREE](https://www.vasp.at/wiki/index.php/NFREE)
+
+
+
+```
+IBRON        =    6
+ISIF         =    3
+NFREE        =    4 or 2
+```
+
+
+
+INCAR 参考：
+
+```
+SYSTEM   =  elastic_constants
+ISTART   =  0
+ICHARG   =  2
+
+PREC     =  Accurate
+ENCUT    =  400
+EDIFF    =  1E-6
+EDIFFG   = -0.01
+
+IBRION   =  6
+ISIF     =  3
+NFREE    =  2
+POTIM    =  0.015
+
+NSW      =  1
+NELM     =  100
+
+ISMEAR   =  0
+SIGMA    =  0.05
+
+KSPACING =  0.15
+
+LCHARG   = .FALSE.
+LWAVE    = .FALSE.
+```
 
 
 
@@ -206,8 +252,6 @@ $$
 $$
 C_{ij}=\begin{pmatrix}C_{11}&C_{12}&C_{12}&0&0&0\\C_{12}&C_{11}&C_{12}&0&0&0\\C_{12}&C_{12}&C_{11}&0&0&0\\0&0&0&C_{44}&0&0\\0&0&0&0&C_{44}&0\\0&0&0&0&0&C_{44}\end{pmatrix}
 $$
-
-
 
 ***Ref***:
 
