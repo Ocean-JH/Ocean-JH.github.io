@@ -19,5 +19,5 @@ The objective of this work is to enhance comprehension of this intriguing system
 
 # 2. CSP with structural prototype
 
-Given the extensive *crystal material database*, we can search for new materials through ***element substitution*** based on ***structural prototype***. I adopted this strategy for the impressive ***GeTe-Sb2Te3 pseudo-binary line*** of the Ge-Sb-Te system, due to the large number of phase-change storage materials found along it.
+Given the extensive *crystal material database*, we can search for new materials through ***element substitution*** based on ***structural prototypes***. I adopted this strategy for the impressive ***GeTe-Sb2Te3 pseudo-binary line*** of the Ge-Sb-Te system, due to the large number of phase-change storage materials found along it.
 The overall process is similar to the above work, with a more stringent energy screening criterion ($E_{form} < E_{cubic}$) due to the prevalence of ***metastable cubic*** phases in structures along pseudo-binary line. In addition, since there are a significant number of structures in the database that share the same prototype, structure de-duplication is a priority.
