@@ -15,10 +15,11 @@ Feel free to [contact me](mailto:wang_jianghai@buaa.edu.cn) at any time if you f
 
 ------
 
-<div class="alert alert-info">
+<div style="color:black; background-color:#FFF3E9; border: 1px solid #FFE0C3; border-radius: 10px; margin-bottom:0rem">
+    <p style="margin:1rem; padding-left: 1rem; line-height: 2.5;">
+    <b>🔖Seeking for Ph.D position in Spring 2025</b><br>
 
-<b>🔖Seeking for Ph.D position in Spring 2025</b><br>
+    My current research focuses on <b>crystal structure prediction</b> and <b>first-principles calculations</b>, and I am eager to explore the diverse opportunities that AI can bring to this field. You can get my CV <a href="../files/Curriculum_Vitae.pdf">here</a>
 
-My current research focuses on **crystal structure prediction** and **first-principles calculations**, and I am eager to explore the diverse opportunities that AI can bring to this field. You can get my CV [here](../files/Curriculum_Vitae.pdf)
-
+    </p>
 </div>
