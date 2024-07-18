@@ -6,6 +6,8 @@ tags:
   - Speaking
 ---
 
+IELTS Speaking Preparation Notes: Part 2
+
 <div style="color:black; background-color:#78D7FA; border: 1px solid #FFE0C3; border-radius: 10px; margin-bottom:0rem">
     <p style="margin:1rem; padding-left: 1rem; line-height: 2.5;">
         ©️ <b><i>Copyright 2024 @ Jianghai Wang</i></b><br/>
