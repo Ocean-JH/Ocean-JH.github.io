@@ -15,7 +15,7 @@ This is the **Practice** part of ***Computational Materials Science: From Algori
         ©️ <b><i>Copyright 2024 @ Jianghai Wang</i></b><br/>
         <i>Author：
             <b>
-            <a href="mailto:your_address@email.com">Jianghai Wang 📨 </a>
+            <a href="mailto:wang_jianghai@buaa.edu.cn">Jianghai Wang 📨 </a>
             </b>
         </i>
         <br/>
