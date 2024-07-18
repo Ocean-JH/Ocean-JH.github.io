@@ -19,7 +19,7 @@ IELTS Speaking Preparation Notes: Part 3
         <br/>
         <i>Date：2024-07-16</i><br/>
         <i>License：<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></i><br/>
-        <i>Note: This series of notes is based on the complimentary <a href="https://britishcouncil.gelielts.cn/">***IELTS Ready: Premium***</a> video course provided by the British Council. DO NOT reproduce without authorization.<br/>
+        Note: This series of notes is based on the complimentary <a href="https://britishcouncil.gelielts.cn/"><b>IELTS Ready: Premium</b></a> video course provided by the British Council. <b>DO NOT reproduce without authorization.</b><br/>
     </p>
 </div>
 
