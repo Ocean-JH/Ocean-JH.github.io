@@ -5,11 +5,11 @@ tags:
   - VASP
 ---
 
-    Task Type: Elastic constant calculation
-    Error log:
+***Task Type: Elastic constant calculation***
+Error log:
 
-> ` internal error in GENERATE_KPOINTS_TRANS: number of G-vector changed in star        (X)        (Y)`
+> ` internal error in GENERATE_KPOINTS_TRANS: number of G-vector changed in star        x        y`
 
-    Solution: Copy `IBZKPT` to `KPOINTS` and recalculate
+**Solution**: Copy `IBZKPT` to `KPOINTS` and recalculate
 
 ------
