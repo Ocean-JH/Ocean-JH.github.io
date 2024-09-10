@@ -1,6 +1,6 @@
 ---
 title: 'Ab-initio Molecular Dynamics （VASP）'
-date: 2024-7-16
+date: 2024-9-9
 tags:
   - VASP
   - Molecular Dynamics
@@ -31,16 +31,17 @@ echo -e "401\n1\n2 2 2\n"|vaspkit
 mv SC222.vasp POSCAR
 ```
 
-<div class="alert alert-success">
+<div style="color:black; background-color:#7EC0EE; border: 1px solid #FFE0C3; border-radius: 10px; margin-bottom:0rem">
 
-<b>💭Why do we use a supercell to perform MD simulations?</b>
+    <b>💭Why do we use a supercell to perform MD simulations?</b><br/>
+    <p style="margin:1rem; padding-left: 1rem; line-height: 2.5;">
 
-**The size of the supercell imposes a limit on the maximum wavelength of lattice vibrations.** The supercell used in an MD simulation should be large enough to account for all vibration modes with significant contribution to the specific quantity of interest to be computed in MD. This can be estimated, e.g., from an appropriate phonon calculation, or from a series of MD simulations with different supercell sizes.
+    **The size of the supercell imposes a limit on the maximum wavelength of lattice vibrations.** The supercell used in an MD simulation should be large enough to account for all vibration modes with significant contribution to the specific quantity of interest to be computed in MD. This can be estimated, e.g., from an appropriate phonon calculation, or from a series of MD simulations with different supercell sizes.<br/>
 
-Furthermore, in calculations considering for instance an adsorbate-substrate problem, or simulations of gases and liquids, the size of the unit cell should be large enough to remove unphysical interactions between atoms and their periodic images. Note that, the same holds also for relaxations of such systems.
+    Furthermore, in calculations considering for instance an adsorbate-substrate problem, or simulations of gases and liquids, the size of the unit cell should be large enough to remove unphysical interactions between atoms and their periodic images. Note that, the same holds also for relaxations of such systems.<br/>
 
-In summary, for your MD simulation, you should choose a supercell large enough to ensure an [ergodic simulation](https://en.wikipedia.org/wiki/Ergodicity) and capture all long-wavelength vibrations of your system.
-
+    In summary, for your MD simulation, you should choose a supercell large enough to ensure an [ergodic simulation](https://en.wikipedia.org/wiki/Ergodicity) and capture all long-wavelength vibrations of your system.
+    </p>
 </div>
 
 > ***Note***:
