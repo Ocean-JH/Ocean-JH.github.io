@@ -1,12 +1,12 @@
 ---
-title: 'Ab-initio Molecular Dynamics （VASP）'
+title: 'Ab-initio Molecular Dynamics (VASP)'
 date: 2024-9-9
 tags:
   - VASP
   - Molecular Dynamics
 ---
 
-# Ab-initio Molecular Dynamics （VASP）
+# Ab-initio Molecular Dynamics (VASP)
 
 > [Ab-initio Molecular Dynamics (AIMD)](https://en.wikipedia.org/wiki/Molecular_dynamics#Ab-initio_molecular_dynamics) is a computational method that uses first principles to simulate the motion of atoms in a system. It is a type of molecular dynamics (MD) simulation that **does not rely on empirical potentials or force fields to describe the interactions between atoms, but rather calculates these interactions directly from the electronic structure of the system using quantum mechanics**.
 > 

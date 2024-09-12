@@ -33,4 +33,4 @@ tags:
 
 - [Materials Cloud](https://www.materialscloud.org/home)
   
-  - [SeeK-path: the k-path finder and visualizer](https://tools.materialscloud.org/seekpath/)
+- [SeeK-path: the k-path finder and visualizer](https://tools.materialscloud.org/seekpath/)
