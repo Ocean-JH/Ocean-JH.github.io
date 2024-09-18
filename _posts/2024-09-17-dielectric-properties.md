@@ -11,17 +11,23 @@ tags:
 ## 1 Dielectric function
 
 当外部电场 ***E*** 作用于介质时，电子和离子电荷都会对扰动场产生反应。对于介电材料，一种简单的方法是认为束缚电荷会在介质内部产生偶极子，从而产生感应极化 ***P***。两个场的综合作用表示为电位移场 ***D***，由下式给出：
+
 $$
 D=E+4\pi P
 $$
+
 **如果外场强度不足以显著改变介电介质的性质，则可以在所谓的线性响应范围内处理感应极化。**此处介电介质对外部场的反应信息由**介电函数**给出：
+
 $$
 \epsilon_{\alpha\beta}=\delta_{\alpha\beta}+4\pi\frac{\partial P_{i}}{\partial E_{j}}
 $$
+
 假设体系具有时间反演对称性，这将导致
+
 $$
 D_\alpha(\omega)=\epsilon_{\alpha\beta}(\omega)E_\beta(\omega)
 $$
+
 根据外场的性质，有不同的方法计算 $\epsilon$：
 
 - 如果 ***E*** 是静态的，可以采用基于有限差分的微扰方法或者密度泛函微扰理论（DFPT）。
@@ -38,9 +44,11 @@ $$
 #### [LCALCEPS](https://www.vasp.at/wiki/index.php/LCALCEPS): finite differences approach
 
 设置 `LCALCEPS = .True.`，介电张量根据极化的导数计算得到：
+
 $$
 \epsilon_{ij}^{\infty}=\delta_{ij}+\frac{4\pi}{\epsilon_{0}}\frac{\partial P_{i}}{\partial\mathcal{E}_{j}}\quad i,j=x,y,z.
 $$
+
 此处的导数通过有限差分显式计算得到。扰动电场的方向和强度必须在 `INCAR` 文件中使用 [`EFIELD_PEAD`](https://www.vasp.at/wiki/index.php/EFIELD_PEAD) 标签指定。与DFPT一样，计算结束后VASP将在 `OUTCAR` 文件中写入介电张量。考虑局域场效应的控制通过变量 [`LRPA`](https://www.vasp.at/wiki/index.php/LRPA) 完成。
 
 ### 1.2 Dynamical response: Green-Kubo and many-body perturbation theory
@@ -48,15 +56,19 @@ $$
 #### [LOPTICS](https://www.vasp.at/wiki/index.php/LOPTICS): Green-Kubo formula
 
 计算得到电子基态后，可以通过 `LOPTICS` 评估频率依赖的介电函数。$\epsilon$ 的**虚部采用显式方程通过对空状态求和确定**：
+
 $$
 \epsilon_{\alpha\beta}^{(2)}\left(\omega\right)=\frac{4\pi^{2}e^{2}}{\Omega}\mathrm{lim}_{q\to0}\frac{1}{q^{2}}\sum_{c,v,\mathbf{k}}2w_{\mathbf{k}}\delta(\epsilon_{c\mathbf{k}}-\epsilon_{v\mathbf{k}}-\omega)\times\langle u_{c\mathbf{k}+\mathbf{e}_{\alpha}q}|u_{v\mathbf{k}}\rangle\langle u_{v\mathbf{k}}|u_{c\mathbf{k}+\mathbf{e}_{\beta}q}\rangle
 $$
+
 此处的索引 *c* 和 *v* 分别指导带和价带状态，$u_{c\mathbf k}$ 是轨道在 *k-point* ***k***处的晶胞周期性部分。
 
 **实部通过Kramers-Kronig变换求解**：
+
 $$
 \epsilon_{\alpha\beta}^{(1)}(\omega)=1+\frac{2}{\pi}P\int_{0}^{\infty}\frac{\epsilon_{\alpha\beta}^{(2)}(\omega^{\prime})\omega^{\prime}}{\omega^{\prime2}-\omega^{2}+i\eta}d\omega^{\prime}
 $$
+
 复位移 $\eta$ 由参数 [`CSHIFT`](https://www.vasp.at/wiki/index.php/CSHIFT) 确定。
 
 在这一近似中忽略了局域场效应，即势的晶胞周期性部分的变化。该效应可以通过密度泛函微扰理论(`LEPSILON = .True.`)或GW计算进行评估。
@@ -99,9 +111,11 @@ $$
 - 对于使用杂化泛函的计算，[AEXX](https://www.vasp.at/wiki/index.php/AEXX) 控制交换关联势中直接交换的比例，[`HFSCREEN`](https://www.vasp.at/wiki/index.php/HFSCREEN) 指定 [range-separated hybrid functionals](https://www.vasp.at/wiki/index.php/Hybrid_functionals:_formalism) 中的range-separation参数。
 
 - 对于纯TDDFT计算，[`LFXC`](https://www.vasp.at/wiki/index.php/LFXC) 在时间演化方程中使用局域交换关联核：
+  
   $$
   f_{\mathrm{xc}}^{\mathrm{loc}}\left(\mathbf{r},\mathbf{r}'\right)=\frac{\delta^{2}\left\{E_{\mathrm{c}}^{\mathrm{DFT}}+\left(1-c_{\mathrm{x}}\right)E_{\mathrm{x}}^{\mathrm{DFT}}\right\}}{\delta\rho(\mathbf{r})\delta\rho\left(\mathbf{r}'\right)}
   $$
+  
   其中 $c_{\mathrm x}$ 是由 [`AEXX`](https://www.vasp.at/wiki/index.php/AEXX) 设置的交换相互作用比例。
 
 #### [ALGO](https://www.vasp.at/wiki/index.php/ALGO) = TIMEEV: delta-pulse electric field
@@ -117,9 +131,11 @@ $$
 #### [ALGO](https://www.vasp.at/wiki/index.php/ALGO) = CHI: polarizability within RPA approximation
 
 通过随机相位近似（Random-Phase approximation, RPA）计算频率介电函数。VASP通过在 `INCAR` 文件设置 `ALGO = CHI` 计算极化率 $\chi$，然后使用下式计算介电函数：
+
 $$
 \epsilon_{\mathbf{GG}'}^{-1}(\mathbf{q},\omega)=\delta_{\mathbf{GG}'}+v(\mathbf{q}+\mathbf{G})\chi_{\mathbf{GG}'}(\mathbf{q},\omega)
 $$
+
 此处 *v* 是描述电子—电子相互作用的基本库伦势。这需要增加 `NBANDS` 以包含未占据态。
 
 计算极化率有两种办法：
@@ -130,9 +146,11 @@ $$
 #### [ALGO](https://www.vasp.at/wiki/index.php/ALGO) = BSE: macroscopic dielectric function including excitons
 
 通过求解[Bethe-Salpeter方程](https://www.vasp.at/wiki/index.php/Category:Bethe-Salpeter_equations)计算宏观介电函数 $\epsilon_M$。将电子-空穴对视为一种新的准粒子，称为***激子***，并利用特征向量 $X_\lambda^{cv\mathbf{k}}$ 和特征值 $\omega_\lambda$ 构建介电函数：
+
 $$
 \epsilon_M(\mathbf{q},\omega)=1+v(\mathbf{q})\sum_{\lambda\lambda^{\prime}}\sum_{c,v,\mathbf{k}}\sum_{c^{\prime},v^{\prime},\mathbf{k}^{\prime}}\langle c\mathbf{k}|e^{i\mathbf{q}\mathbf{r}}|v\mathbf{k}\rangle X_\lambda^{cv\mathbf{k}}\langle c^{\prime}\mathbf{k}^{\prime}|e^{-i\boldsymbol{q}\mathbf{r}}|v^{\prime}\mathbf{k}^{\prime}\rangle X_{\lambda^{\prime}}^{c^{\prime}v^{\prime}\mathbf{k}^{\prime},*}\times S_{\lambda,\lambda^{\prime}}^{-1}\left(\frac{1}{\omega_\lambda-\omega-i\delta}+\frac{1}{\omega_\lambda+\omega+i\delta}\right)
 $$
+
 包含在BSE哈密顿量中已占据和未占据状态的数量分别由 [NBANDSO](https://www.vasp.at/wiki/index.php/NBANDSO) 和 [NBANDSV](https://www.vasp.at/wiki/index.php/NBANDSV) 控制。通常情况下，只需要带隙上下的几个带就可以收敛光谱，且**随着带数量的增加，对内存的要求也会迅速增加**。
 
 在与光学实验（如吸收、反射、MOKE）的比较方面，***q*** 是光子动量。通常考虑 $q\to0$ 的极限。此外，在所谓[Tamm-Dancoff近似](https://www.vasp.at/wiki/index.php/Bethe-Salpeter_equations#Theory#Tamm-Dancoff_approximation)中，谐振项和反谐振项之间的耦合可以被关闭。该近似可以通过设置变量 [`ANTIRES = 0`](https://www.vasp.at/wiki/index.php/ANTIRES) 激活，设置 [`ANTIRES = 1 or 2`](https://www.vasp.at/wiki/index.php/ANTIRES) 将考虑耦合，但会增加计算成本。
@@ -142,9 +160,11 @@ $$
 ### 2.1 Microscopic and macroscopic quantities
 
 实验上测量一种性质时，实验数据呈现的是宏观量；而另一方面，计算上更容易获取微观量。**为了比较实验和计算结果，微观量（例如介电函数）必须在多次重复的单胞上取平均。**通过下式体现宏观介电函数 $\epsilon_M(\mathbf{q},\omega)$ 和微观介电函数的关系：
+
 $$
 \epsilon_M(\mathbf{q},\omega)=\frac{1}{\epsilon_{\mathbf{G}=0,\mathbf{G}^{\prime}=0}^{-1}(\mathbf{q},\omega)}
 $$
+
 其中 $\epsilon_{\mathbf{G}=0,\mathbf{G}^{\prime}=0}^{-1}(\mathbf{q},\omega)$ 是 $\mathbf{G}=\mathbf{G}^{\prime}=0$ 处的逆介电函数。
 
 > **Note**：
@@ -154,9 +174,11 @@ $$
 ### 2.2 Finite momentum dielectric function
 
 在光学极限下，入射光子 ***q*** 的动量几乎为0，因为电场的波长比单胞的尺寸大好几倍。由于库伦势在非常小的动量下发散，介电函数的光学极限必须通过 $q\to0$ 的极限得到。例如，在完全BSE的独立粒子近似情况下，得到
+
 $$
 \lim_{\mathbf{q}\to0}\frac{\langle c\mathbf{k}+\mathbf{q}|e^{\mathrm{i}\mathbf{q}\cdot\mathbf{r}}|v\mathbf{k}\rangle}{q}\approx\lim_{\mathbf{q}\to0}\frac{\langle c\mathbf{k}+\mathbf{q}|1+\mathrm{i}\mathbf{q}\cdot\mathbf{r}|v\mathbf{k}\rangle}{q}=\hat{\mathbf{q}}\cdot\langle c\mathbf{k}+\mathbf{q}|\mathbf{r}|v\mathbf{k}\rangle
 $$
+
 VASP还可以分析有限动量激子的影响。为计算有限动量下的吸收光谱，将 [KPOINT_BSE](https://www.vasp.at/wiki/index.php/KPOINT_BSE) 设置为所需 ***q*** 点的索引。
 
 ### 2.3 Local fields in the Hamiltonian
@@ -194,9 +216,11 @@ PIEZOELECTRIC TENSOR (excluding local field effects)
 ### 2.4 Ion-clamped vs relaxed-ion/dressed dielectric function
 
 在静态或动态响应状态下计算的介电函数都没有考虑入射电场引起离子位置变化而产生的影响。这可以通过计算 *relaxed-ion* （或 *dressed*）介电函数 $\bar{\epsilon}$ 进行修正：
+
 $$
 \bar{\epsilon}_{\alpha\beta}=\epsilon_{\alpha\beta}+\Omega_{0}^{-1}Z_{m\alpha}(\Phi^{-1})_{mn}Z_{n\beta},
 $$
+
 其中 $\Omega_{0}$ 是单胞的体积，$Z$ 是Born有效电荷，$\Phi_{mn}$ 是力常数矩阵。
 
 ### 2.5 Density-density versus current-current response functions
@@ -209,18 +233,33 @@ $$
 在比较周期性系统的实验和计算光学性质时，这种情况是一个常见的误差来源。
 
 事实上，与纵向场相关的微扰由密度—密度极化率函数 $\chi_{\rho\rho}$ 描述，例如经典极限下的激光场；而横向场由电流—电流极化率函数 $\chi_{jj}$ 描述，它实际上是一个 $3\times3$ 张量，例如获取MOKE所需的张量。基本上，时间依赖的密度只通过连续性方程与电流的纵向部分相关联。可以通过下式连接这两种响应函数：
+
 $$
 q^2\chi_{jj}(\mathbf{q},\omega)=\omega^2\chi_{\rho\rho}(\mathbf{q},\omega)
 $$
+
 这保证了通过两种方法得到的介电函数在有限动量和频率下相匹配：$\epsilon[\chi_{\rho\rho}]=\epsilon[\chi_{jj}]$。
 
 电流—电流介电函数在 $q\to0$ 和 $q=0$ 处都是准确的。特别是对于金属，它将重现 $\omega=0$ 处Drude tail的正确行为。然而，$\chi_{jj}$ 更易出现数值不稳定。
 
 ## 3 Other dielectric properties
 
+频率依赖的线性光谱，例如折射率 $n(\omega)$，消光系数 $k(\omega)$，吸收系数 $\alpha(\omega)$，能量损失函数 $L(\omega)$ 和反射率 $R(\omega)$ 可以通过介电函数的实部 $\varepsilon_{1}(\omega)$ 和虚部 $\varepsilon_{2}(\omega)$ 计算：
+
+$$
+\begin{aligned}
+n(\omega)&=\left(\frac{\sqrt{\varepsilon_{1}^{2}+\varepsilon_{2}^{2}}+\varepsilon_{1}}{2}\right)^{\frac{1}{2}}\\
+k(\omega)&=\left(\frac{\sqrt{\varepsilon_1^2+\varepsilon_2^2}-\varepsilon_1}2\right)^{\frac12}\\
+\alpha(\omega)&=\frac{\sqrt2\omega}{c}\left(\sqrt{\varepsilon_1^2+\varepsilon_2^2}-\varepsilon_1\right)^{\frac12}\\
+L(\omega)&=\mathrm{Im}\left(\frac{-1}{\varepsilon(\omega)}\right)=\frac{\varepsilon_{2}}{\varepsilon_{1}^{2}+\varepsilon_{2}^{2}}\\
+R(\omega)&=\frac{(n-1)^2+k^2}{(n+1)^2+k^2}
+\end{aligned}
+$$
+
 ### 3.1 Electron energy loss spectroscopy (EELS)
 
 在EELS实验中，一束具有明确能量的窄电子束射向样品，然后这些电子通过激发等离激元、电子—空穴对或其他高阶准粒子而损失能量给样品。损失函数可以表示为：
+
 $$
 \mathrm{EELS}=-\mathrm{Im}\left[\epsilon^{-1}(\omega)\right]
 $$
@@ -228,6 +267,7 @@ $$
 ### 3.2 Optical conductivity
 
 从麦克斯韦方程组和欧姆定律的微观形式可以得出张量介电函数和光电导率 $\sigma(\omega)$ 之间的关系式：
+
 $$
 \sigma_{\alpha\beta}(\omega)=\mathrm{i}\frac{\omega}{4\pi}\left[\delta_{\alpha\beta}-\epsilon_{\alpha\beta}(\omega)\right]
 $$
@@ -235,10 +275,13 @@ $$
 ### 3.3 Optical absorption
 
 对于穿过介质的电磁波，可以将电场表示为 $\mathbf{E}(\mathbf{r},t)=\mathbf{E}_{0}e^{-\mathrm{i}(\omega t-\mathbf{q}\cdot r)}$，而介质对波传播的影响包含在色散关系 $\omega=\omega(\mathbf{q})$ 中。使用麦克斯韦方程组，得到
+
 $$
 q^2=\frac{\omega^2}{c^2}\epsilon(\omega)
 $$
+
 假设材料的磁导率等于真空磁导率，由上式可知，折射率可以表示为 $n=\sqrt{\epsilon(\omega)}=\tilde{n}+\mathrm{i}k$。由于 $n$ 是复数，$\mathbf{E}(\mathbf{r},t)$ 的指数因子会有一个阻尼系数 $e^{-\frac{\omega}{c}k\hat{q}\cdot\mathbf{r}}$，这个阻尼系数解释了介质对电磁能量的吸收。根据这个关系可以定义吸收系数：
+
 $$
 \alpha(\omega)=\frac{2\omega}{c}k(\omega)
 $$
@@ -246,6 +289,7 @@ $$
 ### 3.4 Reflectance
 
 承上一小节，可以定义法向入射时的反射率系数：
+
 $$
 R=\frac{(1-\tilde{n})^2+k^2}{(1+\tilde{n})^2+k^2}
 $$
@@ -255,6 +299,7 @@ $$
 ### 3.5 Magneto-optical Kerr effect (MOKE)
 
 磁光克尔效应是指入射电磁波与材料的有限磁矩相互作用。相互作用一般与介质的磁化有关，但也有可以观察到有限MOKE的反铁磁系统。通常，反射波相对于入射 ***E**-field* 会获得一个额外的复相位。对于表面或二维材料（如六方$BN$、$MoS_2$），该相位可以使用电流—电流介电张量的非对角分量来计算：
+
 $$
 \theta_\mathrm{K}(\omega)=-\mathrm{Re}\left[\frac{\epsilon_{xy}(\omega)}{(\epsilon_{xx}(\omega)-1)\sqrt{\epsilon_{xx}(\omega)}}\right]
 $$
@@ -264,13 +309,17 @@ $$
 ### 4.1 Low-frequency corrections from atomic displacements
 
 离子运动到低频区域的修正可以通过下式添加到 $\epsilon_{\alpha\beta}^{\infty}$：
+
 $$
 \epsilon_{\alpha\beta}(\omega)=\epsilon_{\alpha\beta}^{\infty}+\frac{4\pi e^{2}}{\Omega_{0}}\sum_{\nu}\frac{S_{\alpha\beta,\nu}}{\omega_{\nu}^{2}-(\omega+\mathrm{i}\eta)^{2}}
 $$
+
 其中 $\omega_{\nu}$ 是模式 $\nu$ 的声子频率，$S_{\alpha\beta,\nu}$ 是由下式定义的mode-oscillator强度：
+
 $$
 S_{\alpha\beta,\nu}=\left(\sum_{I,\delta}Z_{I\alpha\delta}^*\varepsilon_{I\delta,\nu}^*(\mathbf{q}=\mathbf{0})\right)\left(\sum_{J,\delta^{\prime}}Z_{J\beta\delta^{\prime}}^*\varepsilon_{J\delta^{\prime},\nu}(\mathbf{q}=\mathbf{0})\right)
 $$
+
 此处 $Z_{J\beta\delta^{\prime}}^*$ 是Born有效电荷，而 $\varepsilon_{J\delta^{\prime},\nu}(\mathbf{q}=\mathbf{0})$ 是原子 *J* 沿方向 $\delta^{\prime}$ 与振动模式 $\nu$ 相关的本征位移。
 
 > 关于**声子频率**和**特征位移**计算的理论和方法，详见 [Phonons](https://www.vasp.at/wiki/index.php/Phonons:_Theory) 页面。
@@ -280,9 +329,11 @@ $$
 > ***Polar materials***:
 >
 > 对于极性材料，在 $\Gamma$ 附近存在不连续性，即 $\omega_{\nu}^{2}(\mathbf{q}\to\mathbf{0})\neq\omega_{\nu}^{2}(\mathbf{q}=\mathbf{0})$。事实上，对于一个给定的酉方向矢量 ***q***，可以证明Lyddane-Sachs-Teller关系成立：
+> 
 > $$
 > \prod_{\nu}\frac{\omega_{\nu}^{2}(\mathbf{q}\to\mathbf{0})-\omega^{2}}{\omega_{\nu}^{2}(\mathbf{q}=\mathbf{0})-\omega^{2}}=\frac{\sum_{\alpha\beta}q_{\alpha}\epsilon_{\alpha\beta}(\omega)q_{\beta}}{\sum_{\alpha\beta}q_{\alpha}\epsilon_{\alpha\beta}^{\infty}q_{\beta}}
 > $$
+> 
 > 这意味着零动量下LO和TO模式之间的频率劈裂延续了对介电函数的评估。
 >
 > 为获得平滑的声子色散，并在评估介电函数的光学极限时正确考虑LO-TO劈裂，详见 [LO-TO splitting](https://www.vasp.at/wiki/index.php/Phonons:_Theory#Long-range_interatomic_force_constants_(LO-TO_splitting)) 页面。
@@ -290,9 +341,11 @@ $$
 ### 4.2 Corrections from strain
 
 介电张量可以包含在弹性张量 $C_{jk}$ 的评估中（详见[静态线性响应理论](https://www.vasp.at/wiki/index.php/Static_linear_response:_theory)）。虽然这个量通常在固定 ***E**-field* 下评估，但在绝缘材料层间放置薄膜的情况下，计算固定位移场 ***D*** 的弹性张量更加方便，因为边界条件将该矢量的分量固定在与表面垂直的方向上。假设 $C_{jk}^E$ 是固定 ***E**-field* 下定义的弹性张量，$C_{jk}^D$ 是固定 ***D**-field* 下定义的弹性张量，那么他们通过下式相关联：
+
 $$
 C_{jk}^{D}=C_{jk}^{E}+e_{\alpha j}(\epsilon)_{\alpha\beta}^{-1}e_{\beta k}
 $$
+
 其中 $e_{\alpha j}$ 是离子弛豫压电张量。
 
 # Calculation Details

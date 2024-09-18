@@ -31,6 +31,7 @@ tags:
 微扰恒定的响应称为静态响应。不同的静态响应可以理解为**总能量相对于不同外部扰动的导数**。
 
 > 对总能量$E$进行泰勒展开，得到
+> 
 > $$
 > \begin{aligned}
 > E(u,\mathcal{E},\eta)=&E_{0}+ \\
@@ -41,23 +42,27 @@ tags:
 > $$
 >
 > - 能量相对于**电场**的导数是**极化**：
+>   
 >   $$
 >   P_{\alpha}=-\frac{\partial E}{\partial\mathcal{E}_{\alpha}}\quad\mathrm{polarization}
 >   $$
 >
 > - 能量相对于**原子位移**的导数是**力**：
+>   
 >   $$
 >   F_{m}=-\Omega_{0}\frac{\partial E}{\partial u_{m}}\quad\mathrm{forces}
 >   $$
 >
 > - 能量相对于**晶格矢量**的导数是**应力张量**：
+> 
 > $$
->   \sigma_{j}=\frac{\partial E}{\partial\eta_{j}}\quad\mathrm{stresses}
+> \sigma_{j}=\frac{\partial E}{\partial\eta_{j}}\quad\mathrm{stresses}
 > $$
 >   
 > - 
 >
 > 由此引出***clamped-ion***或***frozen-ion***的定义：
+> 
 > $$
 > \begin{gathered}
 > \bar{\chi}_{\alpha\beta}=-\frac{\partial^{2}E}{\partial\mathcal{E}_{\alpha}\partial\mathcal{E}_{\beta}}|_{u,\eta}\quad\mathrm{dielectric~susceptibility} \\
@@ -68,11 +73,15 @@ tags:
 > \Xi_{mj}=-\Omega_{0}\frac{\partial^{2}E}{\partial u_{m}\partial\eta_{j}}|_{\mathcal{E}}\quad\mathrm{force~response~internal~strain~tensor} 
 > \end{gathered}
 > $$
+> 
 > 为了与实验结果进行比较，静态响应属性应考虑**离子弛豫**。通过以上泰勒展开并关注能量最小时的离子位置，得到
+> 
 > $$
 > \tilde{E}(\mathcal{E},\eta)=\min_{u}E(u,\mathcal{E},\eta)
 > $$
+> 
 > 物理***relaxed-ion***张量定义为：
+> 
 > $$
 > \begin{aligned}
 > \chi_{\alpha\beta} &=\bar{\chi}_{\alpha\beta}+\Omega_{0}^{-1}Z_{m\alpha}^{*}(\Phi)_{mn}^{-1}Z_{n\beta}^{*} \quad\mathrm{dielectric~susceptibility} \\
@@ -80,19 +89,23 @@ tags:
 > e_{\alpha j} &=\bar{e}_{\alpha j}+\Omega_{0}^{-1}Z_{m\alpha}^{*}(\Phi)_{mn}^{-1}\Xi_{nj} \quad\mathrm{piezoelectric~tensor} 
 > \end{aligned}
 > $$
+> 
 > 每个方程右侧第二项称为**离子对介电极化率、弹性张量和压电张量的贡献**。
 >
 > - 离子对**介电张量**的贡献
+>   
 >   $$
 >   \epsilon_{ij}^{\mathrm{ion}}=\frac{4\pi}{\Omega}\sum_{kl}Z_{ik}^{*}\Phi_{kl}^{-1}Z_{lj}^{*}
 >   $$
 >
 > - 离子对**弹性张量**的贡献
+>   
 >   $$
 >   C_{ik}^{\mathrm{ion}}=\sum_{kl}\Xi_{ij}\Phi_{jk}^{-1}\Xi_{kl}
 >   $$
 >
 > - 离子对**压电张量**的贡献
+>   
 >   $$
 >   e_{ij}^{\mathrm{ion}}=\sum_{kl}Z_{ij}^{*}\Phi_{jk}^{-1}\Xi_{kl}
 >   $$
@@ -117,6 +130,7 @@ Born有效电荷描述了体系的极化如何随离子的位置而变化，等�
 **动态电荷**定义为晶胞体积$\Omega_{0}$乘以宏观极化 ***P*** 在 *i* 方向上相对于原子$\kappa$亚晶格在 *j* 方向上的刚性位移的偏导数。
 
 然而，极化在周期性系统中并不是唯一定义的，它依赖于由周期性边界条件固定的宏观电场$\mathcal{E}_{i}$。**Born有效电荷$Z^*$是宏观电场为零时极化对位置 *u* 的偏导数。**由于极化是总能量相对于宏观电场的一阶导数，所以$Z^{*}$可以用原子$\kappa$在 *j* 方向上的力 **F** 对$\mathcal{E}\_{i}$的偏导数来重新排列：
+
 $$
 Z_{\kappa,ij}^{*}=\frac{\Omega_{0}}{e}\frac{\partial\mathcal{P}_{i}}{\partial u_{\kappa,j}(q=0)}=\frac{1}{e}\frac{\partial F_{\kappa,j}}{\partial\mathcal{E}_{i}}\quad i,j=x,y,z
 $$
@@ -322,19 +336,25 @@ LCALCEPS = T
 > - 单位转换：
 >
 >   频率的单位是
+>   
 >   $$
 >   [\omega]=\sqrt{\frac1{[m_{\mathrm{ion}}]}\left[\frac{\partial^2E}{\partial u_i\partial u_j}\right]}
 >   $$
+>   
 >   [`POMASS`](https://www.vasp.at/wiki/index.php/POMASS)以原子质量单位 (a.m.u.) 给出：
+>   
 >   $$
 >   [m_{\mathrm{ion}}]=1.660599\cdot10^{-27}\text{kg}
 >   $$
+>   
 >   将能量用 $eV$ 表示，离子位移用 $\mathring{A}$ 表示，则频率单位可以用 SI 表示为
+>   
 >   $$
 >   \begin{aligned}
 >   1[\omega]&=\sqrt{\frac{\mathrm{eV/\mathring{A}}^2}{\mathrm{a.m.u.}}}\\&=\sqrt{\frac{1.602176487\cdot10^{-19}\mathrm{J/(10^{-20}m^{2})}}{1.660599\cdot10^{-27}\mathrm{kg}}}\\&=\sqrt{\frac{16.02176487\mathrm{J/m^{2}}}{1.660599\cdot10^{-27}\mathrm{kg}}}\\&=9.822517\cdot10^{13}\mathrm{s}^{-1}
 >   \end{aligned}
 >   $$
+>   
 >   **其他典型频率单位**：
 >
 >   1. $eV$
