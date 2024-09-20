@@ -263,10 +263,17 @@ IBRION   = 8
 ## 3 Frequency-dependent dielectric response
 
 完整的[频率相关介电函数](https://en.wikipedia.org/wiki/Dielectric_spectroscopy)包括**电子**和**离子**贡献。这些必须在 DFT 运行的基础上单独计算，然后相加：
+
 $$
 \varepsilon(\omega)=\varepsilon_{\mathrm{elec}}(\omega)+\varepsilon_{\mathrm{ion}}(\omega)
 $$
-**介电函数的虚部和实部通过[Kramers-Kronig 关系](https://en.wikipedia.org/wiki/Kramers–Kronig_relations)联系。**
+
+**介电函数的虚部和实部通过[Kramers-Kronig 关系](https://en.wikipedia.org/wiki/Kramers–Kronig_relations)联系**：
+
+$$
+\varepsilon_1(\omega)=1+\frac2\pi P\intop_0^\infty\frac{\varepsilon_2\left(\omega^{\prime}\right)\omega^{\prime}}{\omega^{\prime2}-\omega^2+i\eta}d\omega^{\prime}
+$$
+
 
 从频率相关的介电函数出发，可以计算其他光学特性，例如反射率、吸收率和[光电导率](https://en.wikipedia.org/wiki/Optical_conductivity)。
 
@@ -323,7 +330,7 @@ LCALCEPS = T
 
 > ⚠️**Notes**:
 >
-> - 周期性体系的电子极化是$-fe/(2\pi)^3$乘以所有占据态的Berry相$\int_{BZ}\mathrm{d}\mathbf{k}\left\langle u_{n\mathbf{k}}^{(\mathcal{E}_{i})}\right|\mathrm{i}\nabla_{\mathbf{k}}\left|u_{n\mathbf{k}}^{(\mathcal{E}_{i})}\right\rangle $之和。
+> - 周期性体系的电子极化是$-fe/(2\pi)^3$乘以所有占据态的Berry相$\int_{BZ}\mathrm{d}\mathbf{k}\left\langle u_{n\mathbf{k}}^{(\mathcal{E}_{i})}\right|\mathrm{i}\nabla_{\mathbf{k}}\left|u_{n\mathbf{k}}^{(\mathcal{E}_{i})}\right\rangle$之和。
 >
 > - `LOPTICS = .TRUE.` 引入了未占据状态之和！因此必须设置 [`NBANDS`](https://www.vasp.at/wiki/index.php/NBANDS)以包含足够的未占据带。换言之，极化应该随着 `NBANDS` 的增加而收敛。
 >
