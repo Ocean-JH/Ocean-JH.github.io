@@ -53,7 +53,7 @@ $$
 
 **主要方法**：基于量子化学、密度泛函理论（DFT）的第一性原理计算
 
-**常用软件**：VASP、Gaussian、QuantumEspresso
+**常用软件**：VASP、Gaussian、Quantum Espresso
 
 **计算内容**：
 
@@ -286,7 +286,7 @@ print(b)
      [47 58 30 70 70]
      [70 30 42 30 70]
      [70 70 53 30 36]]
-    
+
 
 ### 2. 理想气体状态方程可视化
 
@@ -325,9 +325,9 @@ plt.show()
 ```
 
 
-    
+​    
 ![line graph](../images/posts/notes-of-cms/《计算材料学》（分子动力学）算法原理_18_0.png)
-    
+​    
 
 
 ## Python综合练习
@@ -352,9 +352,9 @@ plt.show()
 ```
 
 
-    
+​    
 ![pie chart](../images/posts/notes-of-cms/《计算材料学》（分子动力学）算法原理_20_0.png)
-    
+​    
 
 
 ### 2. 直方图
@@ -390,9 +390,9 @@ plt.show()
 ```
 
 
-    
+​    
 ![bar chart](../images/posts/notes-of-cms/《计算材料学》（分子动力学）算法原理_22_0.png)
-    
+​    
 
 
 ### 3. 化学反应台阶图
@@ -521,9 +521,9 @@ plt.show()
 ```
 
 
-    
+​    
 ![stage graph](../images/posts/notes-of-cms/《计算材料学》（分子动力学）算法原理_27_0.png)
-    
+​    
 
 
 # 分子动力学简介
@@ -1233,7 +1233,7 @@ $$
   - Langevin热浴
     
   - Dissipative Particle Dynamics
-    
+  
 - 确定性方法
   
   - 直接速度标定法
@@ -1284,7 +1284,7 @@ $$
 1. 原子携带动量穿过单位面
   
 2. 单位面两边的原子相互作用
-  
+
 
 MD中，压强控制通常通过**改变模拟盒子的尺寸或形状**来实现：
 
@@ -1640,7 +1640,6 @@ $$
 > $$
 \begin{aligned}\sum_{n=1}^\infty\frac1{n^{13}}&=1.00024\\\sum_{n=1}^\infty\frac1{n^7}&=1.00835\\\end{aligned}
 $$
-
 可见表面原子受到向外的净力，**对势作用下将向表面外侧弛豫**，而实际情况下，表面原子通常将向内侧弛豫。
 
 ### 3.3 对势问题根源
@@ -1656,11 +1655,9 @@ $$
 ## 4 多体势与机器学习势
 
 ### 4.1 EAM势
-
 $$
 \begin{aligned}E_\mathrm{coh}&=\underbrace{\sum_iF_i(\rho_i)}_{\text{Embedding energy}}+\underbrace{\frac{1}{2}\sum_i\sum_{j\neq i}V(R_{ij})}_{\text{Pair potential}}\\ \rho_i&=\sum_{i\neq j}f(R_{ij})\end{aligned}
 $$
-
 [嵌入原子势（Embedded atom model, EAM）](https://en.wikipedia.org/wiki/Embedded_atom_model)适用于**金属及合金原子间的相互作用**，如$Fe、Cu、Ni、Pt、Au$等。
 
 核心思想：
@@ -1676,14 +1673,12 @@ $$
 由于EAM势中的**电子密度**不具有方向性，后来又扩展到了Modified Embedded Atom Method (MEAM)势。
 
 **MEAM势**与EAM势的思想类似，但是电子密度项保留了不同的$s, p, d$分量：
-
 $$
 \begin{gathered}
 E_{\mathrm{coh}} =\underbrace{\sum_iF_i(\rho_i)}_{\text{Embedding energy}}+\underbrace{\frac12\sum_i\sum_{j\neq i}V(R_{ij})}_{\text{Pair potential}} \\
 \boldsymbol{\rho}_{i} =\sum_{j,k}f(R_{ij})\cdot f(R_{ik})\cdot g(\cos\theta_{ijk}) 
 \end{gathered}
 $$
-
 **角度项**的贡献对于**过渡金属元素**和**共价体系**尤为重要。
 
 ### 4.3 分子反应力场
@@ -1699,21 +1694,19 @@ $$
   非键作用通常来自于静电作用、范德瓦尔斯作用等。
 
 化学键的作用包括**二体、三体、四体**相互作用
-
 $$
 \begin{aligned}U&=\frac12\sum_{i,j}V(R_i,R_j)+\frac16\sum_{i,j,k}V(R_i,R_j,R_k)+\ldots\end{aligned}
 $$
-
 - 二体相互作用：
   
   - 简谐势
     
-    $$
+$$
     \phi_{bond}(R)=\frac12k_{\alpha\beta}\Big(R-R_{\alpha\beta}^0\Big)^2
     $$
     
     其中$k_{\alpha\beta}\sim700kcal/mol/\AA$。
-  
+
   - Lennard-Jones势
     
     $$
@@ -2142,7 +2135,6 @@ $$
 ### 4.1 共轭方向
 
 为避免震荡的发生，取下一次的迭代搜索方向直接指向极小点。
-
 $$
 \begin{gathered}
 x^1=x^0+\alpha_0d^0 \\
@@ -2150,13 +2142,10 @@ x^1=x^0+\alpha_0d^0 \\
 x^*=x^1+\alpha_1d^1 
 \end{gathered}
 $$
-
 二次函数$f(x)$在$x^*$处取得极小点的必要条件
-
 $$
 \begin{aligned}\nabla f(x^*)&=Ax^*-b=0\\\\\nabla f(x^*)&=A(x^1+\alpha_1d^1)-b=Ax^1-b+\alpha_1Ad^1\\\\&=\nabla f(x^1)+\alpha_1Ad^1=0\end{aligned}
 $$
-
 等式两边同乘$(d^0)^T$，得到$\color{red}{(d^0)^TAd^1=0}$
 
 $d^0$、$d^1$是对于$A$的共轭方向，如果$A=I$，则$d^0$与$d^1$正交。
@@ -2164,7 +2153,6 @@ $d^0$、$d^1$是对于$A$的共轭方向，如果$A=I$，则$d^0$与$d^1$正交�
 ### 4.2 共轭方向的构筑方法
 
 一组$n$个线性无关的向量，可以通过[Gram-Schmidt正交化](https://en.wikipedia.org/wiki/Gram%E2%80%93Schmidt_process)构筑**共轭方向**如下：
-
 $$
 \begin{aligned}
 &u_1=\boldsymbol{v}_1  \\
@@ -2172,60 +2160,49 @@ $$
 &u_{3}=v_{3}-\frac{v_{3}Au_{1}}{u_{1}Au_{1}}-\frac{v_{3}Au_{2}}{uAu_{2}}u_{2} \\
 \end{aligned}
 $$
-
 共轭方向通过迭代点的负梯度构造，所以称之为共轭梯度法。
-
 $$
 f(x)=\frac12x^TAx-b^Tx+c
 $$
-
 从点$x^k$出发，沿$A$某一共轭方向$d^k$作一维搜索，到达$x^{k+1}$
-
 $$
 x^{k+1}=x^k+\alpha_kd^k
 $$
-
 点$x^k$、$x^{k+1}$处的梯度分别为
-
 $$
 g^k=Ax^k-b\quad g^{k+1}=Ax^{k+1}-b
 $$
-
 $d^0=-g^0=-Ax^0+b$，根据一维精确搜索的性质，$(g^1)^Td^0=0$
 
 令$d^1=-g^1+\beta_0d^0$，则$(d^1)^T=-(g^1)^T+\beta_0(d^0)^T$
 
 选择$\beta_0$使得$(d^1)^TAd^0=0$， 上式两边同乘$Ad^0$，可得
-
 $$
 \begin{aligned}
 (d^1)^TAd^0& =-(g^1)^TAd^0+\beta_0(d^0)^TAd^0  \\
 \boldsymbol{\beta}_{\mathbf{0}}& =\frac{(g^1)^TAd^0}{(d^0)^TAd^0} 
 \end{aligned}
 $$
-
 ### 4.3 共轭梯度算法流程
 
 1. 沿$d^{k-1}$方向一维搜索
    
-   $$
+$$
    x^k=x^{k-1}+\alpha_{k-1}d^{k-1}\tag{1}
-   $$
-
+$$
 2. 构筑新的共轭方向
    
-   $$
+$$
 \begin{aligned}d^k&=-g^k+\beta_{k-1}d^{k-1}\\\beta_{k-1}&=\frac{(g^k)^TAd^{k-1}}{(d^{k-1})^TAd^{k-1}}\rightarrow\beta_{k-1}=\frac{(g^k)^Tg^k}{(g^{k-1})^Tg^{k-1}}\end{aligned}
-   $$
+$$
    
    新的共轭方向仅需当前负梯度和前一步的方向信息。
 
 3. 沿新的共轭方向$d^{k-1}$一维搜索
    
-   $$
+$$
    x^{k+1}=x^k+\alpha_kd^k\tag{3}
-   $$
-
+$$
 ### 4.4 代码实现
 
 ```python
@@ -2254,15 +2231,12 @@ def linear_conjugate_gradient(A, b, x0, tol=1e-5, max_iter):
 分子力学，又叫力场方法（Force field method），本质上是****能量最小值方法****，即在**原子间相互作用势**的作用下，通过改变粒子的几何构型，以**能量最小**为判据，得到体系的最优构型。
 
 以约化的L-J势为例，构建一个包含5个原子的二维初始构型，尝试使用优化算法得到能量最低构型。
-
 $$
 U(r_{ij})=4[(\frac1{r_{ij}})^{12}-(\frac1{r_{ij}})^6]
 $$
-
 ### 5.2 构建体系总能
 
 为了便于优化算法的应用，需要构建原子坐标到总能量的函数关系。
-
 $$
 \begin{aligned}
 X&=(x_{1},y_{1},x_{2},y_{2},x_{3},y_{3},x_{4},y_{4},x_{5},y_{5})  \\
@@ -2271,7 +2245,6 @@ E(X)&=\sum_{i=1}^{4}\sum_{j=i+1}^{5}U(r_{ij})=\sum_{i=1}^{4}\sum_{j=i+1}^{5}4[(\
 &=\sum_{i=1}^4\sum_{j=i+1}^54[\frac1{((y_j-y_i)^2+(x_j-x_i)^2)^6}-\frac1{((y_j-y_i)^2+(x_j-x_i)^2)^3}]
 \end{aligned}
 $$
-
 ### 5.3 代码实现
 
 ```python
@@ -2319,27 +2292,21 @@ W1 = SD_search(E, dEdR, x)
 分子动力学演化的核心是求解**牛顿运动方程**。
 
 $N$个原子组成的分子体系，设第$i$个原子的坐标、速度、动量及其作用力分别为$r_{i}(t),\nu_{i}(t),p_{i}(t),f_{i}(r,t)$，其初始值为$r_{i}(0),\nu_{i}(0),p_{i}(0),f_{i}(0)$。则第$i$个原子运动的牛顿方程为
-
 $$
 f_i=m_i\frac{d^2r_i}{dt^2}=m_i\ddot{r}_i\quad{(i=1,2,3,....N)}
 $$
-
 在无约束条件下，有$3N$个自由度，即$3N$个分量的二阶微分方程。
 
 根据系统初始时刻状态求解$3N$个牛顿运动方程，通过**积分算法**可以获得系统所有**原子的运动轨迹**。
 
 第$i$个粒子的运动轨迹
-
 $$
 r_i(t)=\int v_i(t)dt
 $$
-
 未知$V_i(t)$解析形式的情况下，计算机将连续积分**离散化**求近似解
-
 $$
 r_i(t)=\sum_0^tv_i(t)\Delta t
 $$
-
 分子动力学演化轨迹高于势能面（动能贡献），需要在相空间上很好地撒点。
 
 分子动力学积分算法要求
@@ -2359,27 +2326,21 @@ $$
 一维谐振子运动方程
 
 ![alt](https://bohrium.oss-cn-zhangjiakou.aliyuncs.com/article/16392/b0a9b5b0e78e4249853bcd60a2114784/340609a9-b8b9-4179-a40a-2ce23a6d8006.png)
-
 $$
 \begin{aligned}\frac{md^2x}{dt^2}&=f=-kx\quad\quad x(0)=0,v(0)=v_0\\\\x(t)&=\frac{v_0}{\omega}\sin(\omega t)\quad\quad \omega=\sqrt{\frac km}\\\\E(t)&=K(t)+V(t)=\frac{1}{2}mv_0^2=E(t=0)=\color{red}{const.}\end{aligned}
 $$
-
 ### 1.1 基本思想
 
 采用**数值积分**方法计算相空间中的运动轨迹$r(t)$、$v(t)$，将**微分方程**变为**有限差分方程**，以便计算机进行数值求解。
 
 首先，取差分计算的时间步长为$\Delta t$，采用有限差分法一阶微分形式的向前差商表示，即直接运用展开到$\Delta t$的**一阶泰勒展开**公式：
-
 $$
 f(t+\Delta t)=f(t)+\Delta t\frac{df}{dt}+O(\Delta t^2)
 $$
-
 将$r(t)$、$v(t)$泰勒展开后，得到**前向Euler算法**：
-
 $$
 \begin{aligned}r(t+\Delta t)&=r(t)+v(t)\Delta t+O(\Delta t^2)\\\\v(t+\Delta t)&=v(t)+\frac{F(t)}m\Delta t+O(\Delta t^2)\end{aligned}
 $$
-
 ### 1.2 代码实现
 
 ```python
@@ -2415,27 +2376,20 @@ class ForwardEulerIntegrator:
 分子动力学中采用前向Euler算法计算体系能量时，经常会发生**过热**现象，即**计算得到的能量大于体系的真实能量**，甚至可能导致**体系能量不收敛**。
 
 #### 1.3.2 体系过热的物理图像
-
 $$
 \begin{aligned}&\text{真实位置:}\quad&r^{\prime}(t+\Delta t)&=r(t)+\bar{v}\Delta t\\\\&\text{预测位置:}\quad&r(t+\Delta t)&=r(t)+v(t)\Delta t\end{aligned}
 $$
-
 - ${\nu(t)\geq\bar{\nu}}$，预测位置大于真实位置——**势能偏大**
-
 $$
 \begin{aligned}\text{真实速度:}\quad&\quad\nu^{\prime}(t+\Delta t)=v(t)+\frac{\bar{F}}{m}\Delta t\\\\\text{预测速度:}\quad&\quad\nu(t+\Delta t)=\nu(t)+\frac{F(t)}{m}\Delta t\end{aligned}
 $$
-
 - $|F(t)|\leq|\bar{F}|$，预测速度大于真实速度——**动能偏大**
 
 #### 1.3.3 体系过热的理论证明
-
 $$
 \begin{aligned}r(t+\Delta t)&=r(t)+v(t)\Delta t+O(\Delta\textbf{t}^2)\\\\v(t+\Delta t)&=v(t)+\frac{-dV(t)}{\text{m}dr}\Delta t+O(\Delta t^2)\end{aligned}
 $$
-
 忽略二阶小量，代入体系总能量表达式，计算相邻两步的能量差
-
 $$
 \begin{gathered}
 E(t+\Delta t)-E(t)=\frac{1}{2}m\left(v(t)+\frac{-dV(t)}{mdr}\Delta t\right)^{2}+V(t)+\frac{dV(t)}{dt}\Delta t-\frac{1}{2}mv(t)^{2}-V(t) \\
@@ -2444,47 +2398,36 @@ E(t+\Delta t)-E(t)=\frac{1}{2}m\left(v(t)+\frac{-dV(t)}{mdr}\Delta t\right)^{2}+
 =\frac{1}{2m}\biggl[\frac{dV(t)}{dr}\Delta t\biggr]^{2} \color{red}> 0
 \end{gathered}
 $$
-
 **总能量增大，体系过热，前向Euler算法无法保证能量守恒！**
 
 ## 2 [Verlet Integration](https://en.wikipedia.org/wiki/Verlet_integration)
 
 ### 2.1 Position Verlet
-
 $$
 \begin{aligned}r(t+\Delta t)&=r(t)+\dot{r}(t)\Delta t+\frac{\ddot{r}}2\Delta t^2+\frac16\ddot{r}\Delta t^3+\mathcal{O}(\Delta t^4)\\r(t-\Delta t)&=r(t)-\dot{r}(t)\Delta t+\frac{\ddot{r}}2\Delta t^2-\frac16\ddot{r}\Delta t^3+\mathcal{O}(\Delta t^4)\end{aligned}
 $$
-
 - **位置更新**
   
   上式求和：
-
 $$
 r(t+\Delta t)=2r(t)-r(t-\Delta t)+\frac{F(t)}m\Delta t^2+O(\Delta t^4)
 $$
-
 - **速度更新**
   
   上式求差：
-
 $$
 v(t)=\frac{r(t+\Delta t)-r(t-\Delta t)}{2\Delta t}+O(\Delta t^2)
 $$
-
 在Verlet算法中，**位置更新不需要速度信息**，然而要得到动能信息就必须计算速度。
 
 #### 2.1.1 Verlet算法的启动
-
 $$
 r_{n+1}=2r_n-r_{n-1}+\left(\frac{F_n}m\right)\Delta t^2+O(\Delta t^4)
 $$
-
 算法启动时，$n=0$，已知$r_0$，必须有$r_{-1}$的值才能开始计算$r_1$，为避免计算$r_{-1}$，通常采用泰勒展开更新第一步：
-
 $$
 r(t+\Delta t)=r(t)+\nu(t)\Delta t+\frac{a(t)}2\Delta t^2
 $$
-
 然后利用计算得到的$r_0$和$r_1$，根据Verlet算法持续更新位置。
 
 #### 2.1.2 Verlet算法图示
@@ -2529,29 +2472,23 @@ def step(self, system, x, v):
 ### 2.2 Velocity Verlet
 
 将$r(t)$、$v(t)$进行**二阶泰勒展开**：
-
 $$
 \begin{aligned}&r(t+\Delta t)=r(t)+\nu(t)\Delta t+\frac12a(t)\Delta t^2+O(\Delta t^3)\\\\&v(t+\Delta t)=v(t)+a(t)\Delta t+\frac12\dot{a}(t)\Delta t^2+O(\Delta t^3)\end{aligned}
 $$
-
 其中，$\dot{a}(t)=\frac{a(t+\Delta t)-a(t)}{\Delta t}$，代入得到
-
 $$
 v(t+\Delta t)=v(t)+\frac12[a(t)+a(t+\Delta t)]\Delta t+O(\Delta t^3)
 $$
-
 - **位置更新**
   
-  $$
+$$
   r(t+\Delta t)=r(t)+\nu(t)\Delta t+\frac12a(t)\Delta t^2
-  $$
-
+$$
 - **速度更新**
   
-  $$
+$$
   v(t+\Delta t)=v(t)+\frac12[a(t)+a(t+\Delta t)]\Delta t
-  $$
-
+$$
 #### 2.2.1 Velocity Verlet算法图示
 
 ![alt](https://bohrium.oss-cn-zhangjiakou.aliyuncs.com/article/16392/b0a9b5b0e78e4249853bcd60a2114784/1baedf86-e1af-47be-be37-c4878432db7b.png)
@@ -2560,18 +2497,16 @@ $$
 
 - **位置更新**
   
-  $$
+$$
   r(t+\Delta t)=r(t)+\nu(t)\Delta t+\frac12a(t)\Delta t^2 \\
 \boldsymbol{\rightarrow}\begin{cases}v\left(t+\frac{\Delta t}{2}\right)=v(t)+\frac{\Delta t}{2}a(t)\\{}\\r(t+\Delta t)=r(t)+v\left(t+\frac{\Delta t}{2}\right)\Delta t\end{cases}
-  $$
-
+$$
 - **速度更新**
   
-  $$
+$$
   v(t+\Delta t)=v(t)+\frac12[a(t)+a(t+\Delta t)]\Delta t \\
 \rightarrow\begin{cases}a(t+\Delta t)=\dfrac{F(r(t+\Delta t))}{m}\\[2ex]v(t+\Delta t)=v\left(t+\dfrac{\Delta t}{2}\right)+\dfrac{\Delta t}{2}a(t+\Delta t)\end{cases}
-  $$
-
+$$
 #### 2.2.3 半步速度图示
 
 ![alt](https://bohrium.oss-cn-zhangjiakou.aliyuncs.com/article/16392/b0a9b5b0e78e4249853bcd60a2114784/547986ee-917f-4116-b94f-9244f3f8fd2b.png)
@@ -2590,25 +2525,19 @@ return x_new, v_new
 ## 3 [Leapfrog Integration](https://en.wikipedia.org/wiki/Leapfrog_integration)
 
 ![alt](https://bohrium.oss-cn-zhangjiakou.aliyuncs.com/article/16392/b0a9b5b0e78e4249853bcd60a2114784/54d9f56b-ce28-4915-815c-ab7e793cb157.png)
-
 $$
 \begin{aligned}r(t+\Delta t)&=r(t)+\Delta t\cdot v(t+\frac{\Delta t}{2})\\\\v(t+\frac{\Delta t}{2})&=v(t-\frac{\Delta t}{2})+\frac{\Delta t}{m}\cdot F(t)\end{aligned}
 $$
-
 ### 3.1 Leapfrog算法的启动
 
 初始步：
-
 $$
 \begin{aligned}r(\Delta t)&=r(0)+\Delta t\cdot v(\frac{\Delta t}2)\\\\v(\frac{\Delta t}2)&={\color{red}\nu(-\frac{\Delta t}2)}+\frac{\Delta t}m\cdot F(0)\end{aligned}
 $$
-
 其中，
-
 $$
 v\left(-\frac{\Delta t}2\right)=v(0)-\frac{F(0)}{2m}\Delta t
 $$
-
 ### 3.2 Leapfrog算法图示
 
 ![alt](https://bohrium.oss-cn-zhangjiakou.aliyuncs.com/article/16392/b0a9b5b0e78e4249853bcd60a2114784/8a49f65a-aae6-4da6-b9c4-dda171d81c3f.png)
@@ -2654,27 +2583,20 @@ $\Delta t$的选取是一个精度与速度折衷的方案。
 ### 4.2 算法可逆性
 
 #### 4.2.1 牛顿运动方程
-
 $$
 F=m\frac{d^2r}{dt^2}
 $$
-
 进行时间反演，即$\color{red}t^{\prime}=-t$
-
 $$
 \begin{aligned}\frac{dr}{dt^{\prime}}&=-\frac{dr}{dt}\\\\F&=m\frac{d^2r}{dt^{\prime2}}\end{aligned}
 $$
-
 牛顿运动方程**形式不变**，满足时间可逆性。
 
 #### 4.2.2 前向Euler算法
-
 $$
 \begin{aligned}r(t+\Delta t)&=r(t)+v(t)\Delta t\\\\v(t+\Delta t)&=v(t)+\frac{F(t)}m\Delta t\end{aligned}
 $$
-
 进行时间反演，即$\color{red}t^{\prime}=-t$
-
 $$
 \begin{aligned}
 r^\prime(t)& =r(t+\Delta t)-\nu(t+\Delta t)\Delta t  \\
@@ -2686,56 +2608,43 @@ $$
 $$
 \begin{aligned}v'(t)&=v(t+\Delta t)-\frac{F(t+\Delta t)}m\Delta t\\&=v(t)-\frac{F'(t)}m\Delta t^2\\&\neq v(t)\end{aligned}
 $$
-
 **前向Euler算法不满足时间可逆性。**
 
 #### 4.2.3 Verlet算法
-
 $$
 r(t+\Delta t)=2r(t)-r(t-\Delta t)+\frac{F(t)}m\Delta t^2
 $$
-
 进行时间反演，即$\color{red}t^{\prime}=-t$
-
 $$
 \begin{aligned}
 r^{\prime}(t-\Delta t)& =2r(t)-r(t+\Delta t)+\frac{F(t)}m\Delta t^{2}  \\
 &=r(t-\Delta t)
 \end{aligned}
 $$
-
 **Verlet算法满足时间可逆性。**
 
 #### 4.2.4 Veleocity Verlet算法
-
 $$
 \begin{aligned}r(t+\Delta t)&=r(t)+v(t)\Delta t+\frac12a(t)\Delta t^2\\v(t+\Delta t)&=v(t)+\frac12[a(t)+a(t+\Delta t)]\Delta t\end{aligned}
 $$
-
 进行时间反演，即$\color{red}t^{\prime}=-t$
-
 $$
 \begin{aligned}r^{\prime}(t)&=r(t+\Delta t)-\nu(t+\Delta t)\Delta t+\frac12a(t+\Delta t)\Delta t^2 \\
 &=r(t)\end{aligned}
 $$
-
 **Veleocity Verlet算法满足时间可逆性。**
 
 #### 4.2.5 Leapfrog算法
-
 $$
 \begin{gathered}
 r(t+\Delta t)=r(t)+v(t+\frac{\Delta t}2)\Delta t \\
 \begin{aligned}v(t+\frac{\Delta t}{2})&=v(t-\frac{\Delta t}{2})+\frac{F(t)}{m}\Delta t\end{aligned} 
 \end{gathered}
 $$
-
 进行时间反演，即$\color{red}t^{\prime}=-t$
-
 $$
 \begin{aligned}r^{\prime}(t)&=r(t+\Delta t)-v\left(t+\frac{\Delta t}2\right)\Delta t=r(t)\\\\v^{\prime}(t-\frac{\Delta t}2)&=v\left(t+\frac{\Delta t}2\right)-\frac{F(t)}m\Delta t=v(t-\frac{\Delta t}2)\end{aligned}
 $$
-
 **Leapfrog算法满足时间可逆性。**
 
 ### 4.3 [Symplectic Structure（辛结构）](https://en.wikipedia.org/wiki/Symplectic_geometry)
@@ -2755,7 +2664,6 @@ $t$时刻面积：$dA=dxdp$
 $t^\prime$时刻面积：$dA^{\prime}=|de_1\times de_2|$
 
 变换公式：
-
 $$
 \begin{aligned}x^{\prime}&=X(x,p)\\\\p^{\prime}&=P(x,p)\end{aligned}
 $$
@@ -2763,9 +2671,7 @@ $$
 $$
 \begin{aligned}de_1&=\left(\frac{\partial X}{\partial x}\hat{x}+\frac{\partial P}{\partial x}\hat{p}\right)dx\\\\de_2&=\left(\frac{\partial X}{\partial p}\hat{x}+\frac{\partial P}{\partial p}\hat{p}\right)dp\end{aligned}
 $$
-
 通过*Jacobian*判断是否满足辛结构：
-
 $$
 J=\begin{pmatrix}\frac{\partial X}{\partial x}&\frac{\partial X}{\partial p}\\\\\frac{\partial P}{\partial x}&\frac{\partial P}{\partial p}\end{pmatrix}
 $$
