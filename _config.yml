@@ -8,11 +8,11 @@
 
 # Basic Site Settings
 locale                   : "en-US"
-title                    : "Ocean"
+title                    : "Jianghai's Blog"
 title_separator          : "-"
 name                     : &name "Jianghai Wang"
-description              : &description "Postgraduate in Beihang University"
-url                      : https://ocean-jh.github.io/ # the base hostname & protocol for your site e.g. "https://ocean-jh.github.io/"
+description              : &description "PhD student at NTU MSE"
+url                      : https://ocean-jh.github.io/
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "Ocean-JH/Ocean-JH.github.io"
 
@@ -22,13 +22,13 @@ repository               : "Ocean-JH/Ocean-JH.github.io"
 author:
   # Biographic information
   avatar           : "jhwang.png"
-  name             : "Jianghai Wang(王江海)"
-  pronouns         : # example: "she/her"  
-  bio              : "Graduate student in Computational Materials Science"
-  location         : "Beijing, China"
-  employer         : "Beihang University"
+  name             : "Wang Jianghai(王江海)"
+  pronouns         : "he/his"
+  bio              : "PhD student in Computational Materials Science"
+  location         : "Singapore"
+  employer         : "Nanyang Technological University"
   uri              : # URL
-  email            : "wang_jianghai@buaa.edu.cn" 
+  email            : "jianghai001@e.ntu.edu.sg" 
 
   # Academic websites
   arxiv            : # URL - Update with the correct link to your profile

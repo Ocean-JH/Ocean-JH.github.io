@@ -14,8 +14,9 @@ You can [get the PDF](../files/Curriculum_Vitae.pdf) directly.
 Education
 ======
 
-- M.S. in Beihang University, Jan. 2025 (expected)
-- B.S. in Xiamen University, Jun. 2022
+- PhD at Nanyang Technological University, Jan. 2025 - Jan. 2029 (expected)
+- M.S. at Beihang University, Sept. 2022 - Jan. 2025
+- B.S. at Xiamen University, Sept. 2018 - Jun. 2022
 
 Projects
 =====
