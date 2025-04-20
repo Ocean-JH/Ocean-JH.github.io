@@ -32,15 +32,17 @@ tags:
 
 Topological transformation mechanism: **Anti-parallel $<111>_\text{Cubic}$ Rotation**
 
-## Quantitative Analysis of $BX_6$ Tilting
+## Quantitative Analysis of $BX_6$ Tilting - Glazer Notation
 
-Glazer Notation:
+- The sequence of the symbols corresponds to the crystallographic axes.
+- Identical characters indicate the same amplitude of tilt.
+- According to the differences in axis and magnitudes, 23 tilt systems have been obtained and classified into 15 unique space groups according to their symmetry.
 
-Untilted - $a^0/b^0/c^0$
+No tilt - $a^0/b^0/c^0$
 
-Tilted in the same direction - $a^+/b^+/c^+$
+Tilt in the same direction (in-phase tilt) - $a^+/b^+/c^+$
 
-Tilted in opposite directions - $a^-/b^-/c^-$
+Tilt in opposite directions (anti-phase tilt) - $a^-/b^-/c^-$
 
 ***Ref:***
 
@@ -49,6 +51,8 @@ Tilted in opposite directions - $a^-/b^-/c^-$
 [(IUCr) Some structures topologically related to cubic perovskite (E21), ReO3 (D09) and Cu3Au (L12)](https://journals.iucr.org/paper?S0567740877012114)
 
 ## Cubic $Pm\bar3m$ (221) Aristotype Framework
+
+**$BX_6$ Prototype**: $ReO_3$
 
 **Putative Composition**: $ABX_3$
 
@@ -78,7 +82,7 @@ Four rotation systems are considered:
 
 1. Trigonal $R\bar3c$ (167)
 2. Cubic $Im\bar3$ (204)
-3. Tetragonal $I4/mmm$ (123)
+3. Tetragonal $I4/mmm$ (139)
 4. Orthorhombic $Pnma$ (62)
 
 Each of these different tilt systems gives rise to different ***$AX_{12}$ coordination spheres***, which are considered to be the kernels of the perovskites.
@@ -113,7 +117,7 @@ where *d* is the octahedral edge length
 
 **Topological Transformation**: $Pm\bar3m$ (221) $\rightarrow$ $R\bar3c$ (167)
 
-Anti-parallel rotation - $a^-$
+Anti-parallel rotation - $a^-a^-a^-$
 
 At $\phi=30\degree$ conversion from CCP to HCP complete with
 
@@ -146,7 +150,7 @@ At $\phi=30\degree$ conversion from CCP to HCP complete with
 
 **Topological Transformation**: $Pm\bar3m$ (221) $\rightarrow$ $Im\bar3$ (204)
 
-Parallel rotation - $a^+$
+Parallel rotation - $a^+a^+a^+$
 
 At $\phi=22.24\degree$ there is perfect $AX_{12}$ icosahedron with
 
@@ -154,7 +158,7 @@ At $\phi=22.24\degree$ there is perfect $AX_{12}$ icosahedron with
 | ------- | -------------- | --------------- |
 | X       | *24g*          | 0, 0.301, 0.186 |
 
-### 3. Tetragonal $I4/mmm$ (123)
+### 3. Tetragonal $I4/mmm$ (139)
 
 **Putative Composition**: $A^\prime A^{\prime\prime} A^{\prime\prime\prime}_2B_4X_{12}$
 
@@ -186,7 +190,7 @@ where *d* is the octahedral edge length
 - $AX_{12}$ face-sharing [square antiprism](https://en.wikipedia.org/wiki/Square_antiprism): 2 $\times$ square antiprism ($A^{\prime\prime}X_8$)
 - $AX_{12}$ tetracapped cube: cube ($A^\prime X_8$) + 4 $\times$ tetrahedron
 
-**Topological Transformation**: $Pm\bar3m$ (221) $\rightarrow$ $I4/mmm$ (123)
+**Topological Transformation**: $Pm\bar3m$ (221) $\rightarrow$ $I4/mmm$ (139)
 
 Parallel rotation - $a^+/b^+$
 
@@ -221,7 +225,7 @@ where *d* is the octahedral edge length
 | ------------------ | -------------- | ------------------------------------------------------------ |
 | A                  | *4c*           | $x$, $\frac14$, $z$                                          |
 | B                  | *4b*           | 0, 0, $\frac12$                                              |
-| $X^\prime$         | *4c*           | $x$, $x$, 0 with $x = \frac{(\cos^2\phi-1)}{2\cos^2\phi+4}$ $z = \frac{\sqrt3+\tan\phi}{\sqrt{12}}$ |
+| $X^\prime$         | *4c*           | $x$, $\frac14$, $z$ with $x = \frac{(\cos^2\phi-1)}{2\cos^2\phi+4}$ $z = \frac{\sqrt3+\tan\phi}{\sqrt{12}}$ |
 | $X^{\prime\prime}$ | *8d*           | $x$, $y$, $z$ with $x = \frac{2-\sqrt3\sin\phi\cos\phi+\cos^2\phi}{8+4\cos^2\phi}$ $y = -\frac{\tan\phi}{\sqrt{48}}$ $z = \frac{3\sqrt3+\tan\phi}{\sqrt{48}}$ |
 
 **Ideal Kernel:** $AX_{12}$ augmented tetracapped trigonal prism (approx)
@@ -256,6 +260,8 @@ Complications include:
 
 ***Ref:***
 
+[Solid-state principles applied to organic–inorganic perovskites: new tricks for an old dog - Chemical Science (RSC Publishing)](https://pubs-rsc-org.remotexs.ntu.edu.sg/en/content/articlelanding/2014/sc/c4sc02211d)
+
 [An extended Tolerance Factor approach for organic–inorganic perovskites - Chemical Science (RSC Publishing)](https://pubs.rsc.org/en/content/articlelanding/2015/sc/c5sc00961h)
 
 ## Summary
@@ -264,6 +270,14 @@ Complications include:
 - The patterns of $BX_6$ octahedral tilting in 3D $ABX_3$ perovskites will follow regular hierarchical sequences.
 - While in some cases the $BX_6$ octahedra are regular (remain as rigid bodies), there is sometimes distortion required or a small secondary tilt used to maintain the corner-connected topology.
 - The same rules apply to the slabs (even single octahedral sheets) of 'intercalated' perovskite that are 2D structures.
+
+
+
+## Reference
+
+[Some structures topologically related to cubic perovskite (E21), ReO3 (D09) and Cu3Au (L12) - O'Keeffe - 1977 - Acta Crystallographica Section B - Wiley Online Library](https://onlinelibrary.wiley.com/doi/abs/10.1107/S0567740877012114)
+
+
 
 ## Key Text Book
 
