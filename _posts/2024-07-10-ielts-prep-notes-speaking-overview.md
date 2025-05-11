@@ -3,7 +3,6 @@ title: 'IELTS Prep Notes - Speaking (Overview)'
 date: 2024-7-10
 tags:
   - IELTS
-  - Speaking
 ---
 
 IELTS Speaking Preparation Notes: Overview

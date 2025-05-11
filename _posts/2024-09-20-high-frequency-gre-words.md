@@ -2,9 +2,7 @@
 title: 'High Frequency GRE Vocabularies'
 date: 2024-9-20
 tags:
-
   - GRE
-  - Vocabulary
 ---
 
 # High Frequency GRE Vocabularies

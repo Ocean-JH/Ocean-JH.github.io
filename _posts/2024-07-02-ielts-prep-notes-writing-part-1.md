@@ -3,7 +3,6 @@ title: 'IELTS Prep Notes - Writing (Part 1)'
 date: 2024-07-02
 tags:
   - IELTS
-  - Writing
 ---
 
 IELTS Writing Preparation Notes: Part 1

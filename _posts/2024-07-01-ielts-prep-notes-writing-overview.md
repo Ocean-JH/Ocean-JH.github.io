@@ -3,7 +3,6 @@ title: 'IELTS Prep Notes - Writing (Overview)'
 date: 2024-07-01
 tags:
   - IELTS
-  - Writing
 ---
 
 IELTS Writing Preparation Notes: Overview

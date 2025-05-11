@@ -3,7 +3,6 @@ title: 'IELTS Prep Notes - Speaking (Part 1)'
 date: 2024-7-12
 tags:
   - IELTS
-  - Speaking
 ---
 
 IELTS Speaking Preparation Notes: Part 1
