@@ -158,6 +158,8 @@ Input data to draw the rutile structure
 
 4. Define Translucent Polyhedra and Bonds
 
+   Draw Mode (left-hand tool bar) $\rightarrow$ OGL Single
+
    Input 1 $\rightarrow$ Polyhedra $\rightarrow$ 3D Parameters
 
    Specify Faces as Translucent (Opacity 0.6) $\rightarrow$ Specify Central-Ligand Bonds as Rods (0.05) $\rightarrow$ OK
