@@ -6,7 +6,7 @@ tags:
   - ATOMS
 ---
 
-# Appendix: ATOMS - Installation & Use
+# ATOMS - Installation & Use
 
 ## ATOMS 1: Download, Installation & Testing
 
