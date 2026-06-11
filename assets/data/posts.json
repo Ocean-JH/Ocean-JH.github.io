@@ -1,0 +1,314 @@
+[
+  {
+    "title": "Useful Links for Academic Writing",
+    "slug": "useful-links-for-academic-writing",
+    "date": "2025-08-01",
+    "topic": "Academic Preparation",
+    "tags": [
+      "Academic Writing"
+    ],
+    "description": "Collected resources for academic writing, grammar, phrase banks, and scientific communication.",
+    "source": "/content/posts/2025-08-01-useful-links-for-academic-writing.md",
+    "url": "/posts/post.html?slug=useful-links-for-academic-writing"
+  },
+  {
+    "title": "Perovskite Framework Transformations",
+    "slug": "perovskite-framework-transformations",
+    "date": "2025-03-06",
+    "topic": "Computational Materials",
+    "tags": [
+      "Perovskite"
+    ],
+    "description": "Notes on perovskite aristotypes, hettotypes, octahedral tilting, and framework transformations.",
+    "source": "/content/posts/2025-03-06-perovskite-framework-transformations.md",
+    "url": "/posts/post.html?slug=perovskite-framework-transformations"
+  },
+  {
+    "title": "ATOMS - Installation & Use",
+    "slug": "ATOMS-installation-and-use",
+    "date": "2025-02-28",
+    "topic": "Computational Materials",
+    "tags": [
+      "ATOMS"
+    ],
+    "description": "Installing and using ATOMS for crystal-structure visualization and manual structure input.",
+    "source": "/content/posts/2025-02-28-ATOMS-installation-and-use.md",
+    "url": "/posts/post.html?slug=ATOMS-installation-and-use"
+  },
+  {
+    "title": "High Frequency GRE Vocabularies",
+    "slug": "high-frequency-gre-words",
+    "date": "2024-09-20",
+    "topic": "Academic Preparation",
+    "tags": [
+      "GRE"
+    ],
+    "description": "A compact vocabulary log for high-frequency GRE words and usage examples.",
+    "source": "/content/posts/2024-09-20-high-frequency-gre-words.md",
+    "url": "/posts/post.html?slug=high-frequency-gre-words"
+  },
+  {
+    "title": "Dielectric Properties (VASP)",
+    "slug": "dielectric-properties",
+    "date": "2024-09-17",
+    "topic": "Computational Materials",
+    "tags": [
+      "VASP",
+      "Dielectric function"
+    ],
+    "description": "Notes on dielectric functions and response calculations in VASP.",
+    "source": "/content/posts/2024-09-17-dielectric-properties.md",
+    "url": "/posts/post.html?slug=dielectric-properties"
+  },
+  {
+    "title": "Linear Response (VASP)",
+    "slug": "linear-response",
+    "date": "2024-09-15",
+    "topic": "Computational Materials",
+    "tags": [
+      "VASP",
+      "Linear Response"
+    ],
+    "description": "A VASP-oriented note on linear response, dielectric functions, phonons, and strain perturbations.",
+    "source": "/content/posts/2024-09-15-linear-response.md",
+    "url": "/posts/post.html?slug=linear-response"
+  },
+  {
+    "title": "Electronic Structure Analysis (VASP)",
+    "slug": "electronic-structure-analysis",
+    "date": "2024-09-12",
+    "topic": "Computational Materials",
+    "tags": [
+      "VASP",
+      "Electronic Structure"
+    ],
+    "description": "Qualitative and quantitative workflows for charge density, population analysis, and related electronic-structure outputs.",
+    "source": "/content/posts/2024-09-12-electronic-structure-analysis.md",
+    "url": "/posts/post.html?slug=electronic-structure-analysis"
+  },
+  {
+    "title": "Ab-initio Molecular Dynamics (VASP)",
+    "slug": "ab-initio-molecular-dynamics",
+    "date": "2024-09-09",
+    "topic": "Computational Materials",
+    "tags": [
+      "VASP",
+      "Molecular Dynamics"
+    ],
+    "description": "Computational details and setup notes for ab-initio molecular dynamics simulations in VASP.",
+    "source": "/content/posts/2024-09-09-ab-initio-molecular-dynamics.md",
+    "url": "/posts/post.html?slug=ab-initio-molecular-dynamics"
+  },
+  {
+    "title": "IELTS Prep Notes - Speaking (Part 3)",
+    "slug": "ielts-prep-notes-speaking-part-3",
+    "date": "2024-07-16",
+    "topic": "Academic Preparation",
+    "tags": [
+      "IELTS"
+    ],
+    "description": "IELTS Speaking Preparation Notes: Part 3",
+    "source": "/content/posts/2024-07-16-ielts-prep-notes-speaking-part-3.md",
+    "url": "/posts/post.html?slug=ielts-prep-notes-speaking-part-3"
+  },
+  {
+    "title": "IELTS Prep Notes - Speaking (Part 2)",
+    "slug": "ielts-prep-notes-speaking-part-2",
+    "date": "2024-07-14",
+    "topic": "Academic Preparation",
+    "tags": [
+      "IELTS"
+    ],
+    "description": "IELTS Speaking Preparation Notes: Part 2",
+    "source": "/content/posts/2024-07-14-ielts-prep-notes-speaking-part-2.md",
+    "url": "/posts/post.html?slug=ielts-prep-notes-speaking-part-2"
+  },
+  {
+    "title": "IELTS Prep Notes - Speaking (Part 1)",
+    "slug": "ielts-prep-notes-speaking-part-1",
+    "date": "2024-07-12",
+    "topic": "Academic Preparation",
+    "tags": [
+      "IELTS"
+    ],
+    "description": "IELTS Speaking Preparation Notes: Part 1",
+    "source": "/content/posts/2024-07-12-ielts-prep-notes-speaking-part-1.md",
+    "url": "/posts/post.html?slug=ielts-prep-notes-speaking-part-1"
+  },
+  {
+    "title": "IELTS Prep Notes - Speaking (Overview)",
+    "slug": "ielts-prep-notes-speaking-overview",
+    "date": "2024-07-10",
+    "topic": "Academic Preparation",
+    "tags": [
+      "IELTS"
+    ],
+    "description": "IELTS Speaking Preparation Notes: Overview",
+    "source": "/content/posts/2024-07-10-ielts-prep-notes-speaking-overview.md",
+    "url": "/posts/post.html?slug=ielts-prep-notes-speaking-overview"
+  },
+  {
+    "title": "IELTS Prep Notes - Writing (Part 2)",
+    "slug": "ielts-prep-notes-writing-part-2",
+    "date": "2024-07-03",
+    "topic": "Academic Preparation",
+    "tags": [
+      "IELTS"
+    ],
+    "description": "IELTS Writing Preparation Notes: Part 2",
+    "source": "/content/posts/2024-07-03-ielts-prep-notes-writing-part-2.md",
+    "url": "/posts/post.html?slug=ielts-prep-notes-writing-part-2"
+  },
+  {
+    "title": "IELTS Prep Notes - Writing (Part 1)",
+    "slug": "ielts-prep-notes-writing-part-1",
+    "date": "2024-07-02",
+    "topic": "Academic Preparation",
+    "tags": [
+      "IELTS"
+    ],
+    "description": "IELTS Writing Preparation Notes: Part 1",
+    "source": "/content/posts/2024-07-02-ielts-prep-notes-writing-part-1.md",
+    "url": "/posts/post.html?slug=ielts-prep-notes-writing-part-1"
+  },
+  {
+    "title": "IELTS Prep Notes - Writing (Overview)",
+    "slug": "ielts-prep-notes-writing-overview",
+    "date": "2024-07-01",
+    "topic": "Academic Preparation",
+    "tags": [
+      "IELTS"
+    ],
+    "description": "IELTS Writing Preparation Notes: Overview",
+    "source": "/content/posts/2024-07-01-ielts-prep-notes-writing-overview.md",
+    "url": "/posts/post.html?slug=ielts-prep-notes-writing-overview"
+  },
+  {
+    "title": "VASP Error & Solution",
+    "slug": "vasp-error-and-solution",
+    "date": "2024-06-15",
+    "topic": "Computational Materials",
+    "tags": [
+      "VASP"
+    ],
+    "description": "Task Type: Elastic constant calculation",
+    "source": "/content/posts/2024-06-15-vasp-error-and-solution.md",
+    "url": "/posts/post.html?slug=vasp-error-and-solution"
+  },
+  {
+    "title": "Determining optical bandgap with Tauc Plot",
+    "slug": "determining-optical-bandgap-with-tauc-plot",
+    "date": "2024-06-04",
+    "topic": "Computational Materials",
+    "tags": [
+      "optical bandgap",
+      "tauc plot"
+    ],
+    "description": "实验上主要采用Tauc Plot方法确定材料的光学带隙，理论计算上主要通过介电函数虚部第一个吸收峰确定材料的光学带隙。",
+    "source": "/content/posts/2024-06-04-determining-optical-bandgap-with-tauc-plot.md",
+    "url": "/posts/post.html?slug=determining-optical-bandgap-with-tauc-plot"
+  },
+  {
+    "title": "Band-structure calculation using hybrid functionals",
+    "slug": "band-structure-calculation-using-hybrid-functionals",
+    "date": "2024-06-01",
+    "topic": "Computational Materials",
+    "tags": [
+      "VASP",
+      "band structure",
+      "hybrid functional"
+    ],
+    "description": "采用杂化泛函不能使用ICHARG=11，即只能进行自洽计算。",
+    "source": "/content/posts/2024-06-01-band-structure-calculation-using-hybrid-functionals.md",
+    "url": "/posts/post.html?slug=band-structure-calculation-using-hybrid-functionals"
+  },
+  {
+    "title": "Notes of CMS practice",
+    "slug": "notes-of-cms-practice",
+    "date": "2024-05-07",
+    "topic": "Research Reference",
+    "tags": [
+      "notes",
+      "Computational Materials Science",
+      "Molecular Dynamics",
+      "LAMMPS"
+    ],
+    "description": "This is the Practice part of Computational Materials Science: From Algorithm principle to Code Implementation.",
+    "source": "/content/posts/2024-05-07-notes-of-cms-practice.md",
+    "url": "/posts/post.html?slug=notes-of-cms-practice"
+  },
+  {
+    "title": "Elastic Mechanics",
+    "slug": "elastic-mechanics",
+    "date": "2024-04-06",
+    "topic": "Computational Materials",
+    "tags": [
+      "VASP"
+    ],
+    "description": "二阶弹性常数（SOECs）控制着材料的力学性质，对材料的稳定性和刚度有重要影响。",
+    "source": "/content/posts/2024-04-06-elastic-mechanics.md",
+    "url": "/posts/post.html?slug=elastic-mechanics"
+  },
+  {
+    "title": "Notes of CMS Principle",
+    "slug": "notes-of-cms-principle",
+    "date": "2024-03-10",
+    "topic": "Research Reference",
+    "tags": [
+      "notes",
+      "Computational Materials Science",
+      "Python"
+    ],
+    "description": "This is the Principle part of Computational Materials Science: From Algorithm principle to Code Implementation.",
+    "source": "/content/posts/2024-03-10-notes-of-cms-principle.md",
+    "url": "/posts/post.html?slug=notes-of-cms-principle"
+  },
+  {
+    "title": "Collection of Research Utilities",
+    "slug": "research-utilities",
+    "date": "2024-02-29",
+    "topic": "Research Reference",
+    "tags": [
+      "utility"
+    ],
+    "description": "Utilities for research on computational materials science.",
+    "source": "/content/posts/2024-02-29-research-utilities.md",
+    "url": "/posts/post.html?slug=research-utilities"
+  },
+  {
+    "title": "Collection of Research Tutorials",
+    "slug": "research-tutorials",
+    "date": "2024-02-29",
+    "topic": "Research Reference",
+    "tags": [
+      "tutorial"
+    ],
+    "description": "Tutorials related to computational materials science software.",
+    "source": "/content/posts/2024-02-29-research-tutorials.md",
+    "url": "/posts/post.html?slug=research-tutorials"
+  },
+  {
+    "title": "Collection of Research Libraries",
+    "slug": "research-libraries",
+    "date": "2024-02-29",
+    "topic": "Research Reference",
+    "tags": [
+      "library"
+    ],
+    "description": "Library of Computational Materials Science",
+    "source": "/content/posts/2024-02-29-research-libraries.md",
+    "url": "/posts/post.html?slug=research-libraries"
+  },
+  {
+    "title": "Unit Conversions",
+    "slug": "unit-conversions",
+    "date": "2024-01-01",
+    "topic": "Research Reference",
+    "tags": [
+      "unit"
+    ],
+    "description": "Unit conversions commonly used in computational materials science",
+    "source": "/content/posts/2024-01-01-unit-conversions.md",
+    "url": "/posts/post.html?slug=unit-conversions"
+  }
+]

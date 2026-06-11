@@ -1,0 +1,28 @@
+{
+  "profile": {
+    "name": "Wang Jianghai",
+    "nativeName": "王江海",
+    "role": "PhD student in Computational Materials Science",
+    "affiliation": "Nanyang Technological University",
+    "location": "Singapore",
+    "email": "jianghai001@e.ntu.edu.sg",
+    "github": "Ocean-JH",
+    "cvUrl": ""
+  },
+  "researchInterests": [
+    {
+      "title": "Crystal structure prediction",
+      "description": "Exploring metastable materials through global optimization, structural prototypes, and first-principles validation."
+    },
+    {
+      "title": "First-principles workflows",
+      "description": "Connecting electronic structure, phonons, elasticity, dielectric response, and transport calculations for materials discovery."
+    },
+    {
+      "title": "AI for materials",
+      "description": "Using machine learning potentials and data-driven models to accelerate configuration-space exploration."
+    }
+  ],
+  "publications": [],
+  "writing": []
+}
