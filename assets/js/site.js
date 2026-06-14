@@ -254,7 +254,12 @@ function renderWriting(items, showArchiveLink = false) {
 
   list.replaceChildren();
   items.forEach((item) => {
-    const article = createElement("article", "writing-item");
+    const url = text(item.url);
+    const article = createElement(url ? "a" : "article", url ? "writing-item writing-card-link" : "writing-item");
+    if (url) {
+      article.href = url;
+      article.setAttribute("aria-label", `Read ${text(item.title)}`);
+    }
     article.append(createElement("h3", "", text(item.title)));
 
     const description = text(item.description);
@@ -268,13 +273,6 @@ function renderWriting(items, showArchiveLink = false) {
     });
     if (meta.children.length) {
       article.append(meta);
-    }
-
-    const link = createSafeLink("Read", text(item.url));
-    if (link) {
-      const links = createElement("div", "item-links");
-      links.append(link);
-      article.append(links);
     }
 
     list.append(article);

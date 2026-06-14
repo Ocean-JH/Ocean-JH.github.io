@@ -363,14 +363,14 @@ function renderArchive(posts) {
       article.innerHTML = `
         <div>
           <p class="section-kicker">${escapeHtml(post.topic || "Note")}</p>
-          <h3><a href="${escapeHtml(post.url)}">${escapeHtml(post.title)}</a></h3>
+          <h3>${escapeHtml(post.title)}</h3>
           <p>${escapeHtml(post.description || "")}</p>
           <div class="item-meta">
             <span>${escapeHtml(formatDate(post.date))}</span>
             ${(post.tags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
           </div>
         </div>
-        <a class="read-more" href="${escapeHtml(post.url)}">Read</a>
+        <a class="post-card-link" href="${escapeHtml(post.url)}" aria-label="Read ${escapeHtml(post.title)}"></a>
       `;
       list.append(article);
     });

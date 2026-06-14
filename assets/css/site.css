@@ -420,6 +420,25 @@ h1 {
   padding: 1.15rem 1.25rem;
 }
 
+.writing-card-link {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.writing-card-link:hover,
+.writing-card-link:focus-visible {
+  border-color: rgba(16, 128, 120, 0.42);
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
+}
+
+.writing-card-link:focus-visible {
+  outline: 3px solid rgba(16, 128, 120, 0.22);
+  outline-offset: 3px;
+}
+
 .item-meta {
   display: flex;
   flex-wrap: wrap;
@@ -580,31 +599,46 @@ h1 {
 }
 
 .post-archive-item {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: 1.2rem;
-  align-items: center;
+  grid-template-columns: minmax(0, 1fr);
   padding: 1.25rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.78);
+  transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+}
+
+.post-archive-item:hover,
+.post-archive-item:focus-within {
+  border-color: rgba(16, 128, 120, 0.42);
+  box-shadow: var(--shadow);
+  transform: translateY(-1px);
 }
 
 .post-archive-item h3 {
   margin: 0;
   font-size: 1.18rem;
   line-height: 1.28;
+  color: var(--ink);
 }
 
-.post-archive-item h3 a,
-.read-more,
+.post-card-link {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.post-card-link:focus-visible {
+  outline: 3px solid rgba(16, 128, 120, 0.22);
+  outline-offset: 3px;
+}
+
 .back-link {
   color: var(--ink);
   text-decoration: none;
 }
 
-.post-archive-item h3 a:hover,
-.read-more:hover,
 .back-link:hover {
   color: var(--teal-dark);
   text-decoration: underline;
@@ -615,7 +649,6 @@ h1 {
   color: var(--muted);
 }
 
-.read-more,
 .back-link {
   font-weight: 800;
 }
