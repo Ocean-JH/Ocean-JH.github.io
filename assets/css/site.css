@@ -427,6 +427,12 @@ h1 {
   transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
 }
 
+.writing-card-link *,
+.writing-card-link:hover *,
+.writing-card-link:focus-visible * {
+  text-decoration: none;
+}
+
 .writing-card-link:hover,
 .writing-card-link:focus-visible {
   border-color: rgba(16, 128, 120, 0.42);
