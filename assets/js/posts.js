@@ -1,4 +1,5 @@
 const POSTS_INDEX_URL = "/assets/data/posts.json";
+const POSTS_CONTENT_URL = "/assets/data/post-content.json";
 const MARKED_URL = "https://cdn.jsdelivr.net/npm/marked/marked.min.js";
 const MATHJAX_URL = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js";
 
@@ -117,6 +118,39 @@ function rewriteLegacyMarkdown(markdown) {
 
 function stripFrontMatter(markdown) {
   return markdown.replace(/^---[\s\S]*?---\s*/, "");
+}
+
+function normalizeHeadingText(value) {
+  return cleanText(value)
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/[`*_~]/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+}
+
+function stripDuplicateTitleHeading(markdown, title) {
+  const expectedTitle = normalizeHeadingText(title);
+  if (!expectedTitle) {
+    return markdown;
+  }
+
+  const lines = markdown.split(/\r?\n/);
+  const firstContentIndex = lines.findIndex((line) => line.trim());
+  if (firstContentIndex === -1) {
+    return markdown;
+  }
+
+  const firstLine = lines[firstContentIndex].trim();
+  const heading = /^#\s+(.+?)\s*#*$/.exec(firstLine);
+  if (!heading || normalizeHeadingText(heading[1]) !== expectedTitle) {
+    return markdown;
+  }
+
+  lines.splice(firstContentIndex, 1);
+  return lines.join("\n").replace(/^\s+/, "");
 }
 
 function inlineMarkdown(value) {
@@ -259,13 +293,21 @@ function renderMarkdownLite(markdown) {
   return html.join("\n");
 }
 
-function renderMarkdown(markdown) {
-  const body = rewriteLegacyMarkdown(stripFrontMatter(markdown));
+function renderMarkdown(markdown, title = "") {
+  const body = rewriteLegacyMarkdown(stripDuplicateTitleHeading(stripFrontMatter(markdown), title));
   if (window.marked && typeof window.marked.parse === "function") {
     window.marked.setOptions({ gfm: true, breaks: false });
     return window.marked.parse(body);
   }
   return renderMarkdownLite(body);
+}
+
+async function loadPostMarkdown(post, contentBySlug) {
+  const embedded = cleanText(contentBySlug[post.slug]);
+  if (embedded) {
+    return embedded;
+  }
+  return fetchText(post.source);
 }
 
 function postMatches(post, query, tag) {
@@ -388,9 +430,10 @@ async function renderReader(posts) {
   `;
 
   try {
-    const markdown = await fetchText(post.source);
+    const contentBySlug = await fetchJson(POSTS_CONTENT_URL);
+    const markdown = await loadPostMarkdown(post, contentBySlug);
     await ensureMarked();
-    body.innerHTML = renderMarkdown(markdown);
+    body.innerHTML = renderMarkdown(markdown, post.title);
     showMissingAssets(body);
     await ensureMathJax();
     if (window.MathJax && window.MathJax.typesetPromise) {
