@@ -1,4 +1,18 @@
 {
+  "site": {
+    "language": "en",
+    "url": "https://ocean-jh.github.io/",
+    "title": "Wang Jianghai | Computational Materials Science",
+    "description": "Academic homepage of Wang Jianghai, PhD student in Computational Materials Science at Nanyang Technological University.",
+    "socialDescription": "Research in crystal structure prediction, first-principles calculations, and AI for materials discovery.",
+    "brandMark": "WJ"
+  },
+  "navigation": {
+    "news": "News",
+    "research": "Research",
+    "publications": "Publications",
+    "writing": "Writing"
+  },
   "profile": {
     "name": "Wang Jianghai",
     "nativeName": "王江海",
@@ -7,22 +21,98 @@
     "location": "Singapore",
     "email": "jianghai001@e.ntu.edu.sg",
     "github": "Ocean-JH",
+    "linkedin": "https://www.linkedin.com/in/jianghai-wang-955522346/",
+    "orcid": "https://orcid.org/0009-0008-6244-7330",
+    "googleScholar": "",
     "cvUrl": ""
   },
-  "researchInterests": [
-    {
-      "title": "Crystal structure prediction",
-      "description": "Exploring metastable materials through global optimization, structural prototypes, and first-principles validation."
+  "home": {
+    "hero": {
+      "eyebrow": "Computational Materials Science",
+      "description": "PhD student in Computational Materials Science at Nanyang Technological University, working on crystal structure prediction, first-principles workflows, and AI-accelerated materials discovery.",
+      "socialAriaLabel": "Contact and academic profiles",
+      "researchMarkLabel": "Research focus mark",
+      "researchMarkCaptions": [
+        "Structure",
+        "Electronic Response",
+        "Learning Potentials"
+      ]
     },
-    {
-      "title": "First-principles workflows",
-      "description": "Connecting electronic structure, phonons, elasticity, dielectric response, and transport calculations for materials discovery."
+    "summary": {
+      "kicker": "Profile",
+      "title": "Materials discovery across computation and learning.",
+      "description": "I study how atomic structure, energetic stability, and functional response connect in complex materials. My current interests sit between robust first-principles calculation, efficient structure exploration, and machine learning models that make larger search spaces tractable."
     },
-    {
-      "title": "AI for materials",
-      "description": "Using machine learning potentials and data-driven models to accelerate configuration-space exploration."
+    "news": {
+      "kicker": "News",
+      "title": "Recent updates"
+    },
+    "research": {
+      "kicker": "Research",
+      "title": "Current interests"
+    },
+    "publications": {
+      "kicker": "Publications",
+      "title": "Selected publications"
+    },
+    "writing": {
+      "kicker": "Writing",
+      "title": "Notes and essays",
+      "archiveLabel": "All notes",
+      "archiveUrl": "/posts/",
+      "homepageLimit": 6
+    },
+    "resources": {
+      "kicker": "Resources",
+      "title": "Useful links and projects."
     }
-  ],
-  "publications": [],
-  "writing": []
+  },
+  "postsPage": {
+    "title": "Notes",
+    "description": "Notes and writing by Wang Jianghai on computational materials science, VASP, materials tools, and academic preparation.",
+    "eyebrow": "Notes and Writing",
+    "heading": "Research notes, tutorials, and study logs.",
+    "introduction": "A living archive of computational materials science notes, VASP workflows, materials references, and academic preparation materials.",
+    "toolbarLabel": "Post filters",
+    "searchLabel": "Search",
+    "searchPlaceholder": "Search notes",
+    "tagFilterLabel": "Filter by topic",
+    "archiveKicker": "Archive",
+    "archiveTitle": "All notes",
+    "allTagsLabel": "All",
+    "emptyMessage": "No notes match this filter."
+  },
+  "newsPage": {
+    "title": "News",
+    "description": "News and research updates from Wang Jianghai.",
+    "backLabel": "Back to homepage",
+    "defaultTopic": "News",
+    "loadingTitle": "Loading update",
+    "notFoundTitle": "News not found",
+    "notFoundTopic": "News",
+    "notFoundMessage": "The requested news entry does not exist."
+  },
+  "postPage": {
+    "title": "Note",
+    "description": "Academic note by Wang Jianghai.",
+    "backLabel": "Back to all notes",
+    "defaultTopic": "Note",
+    "loadingTitle": "Loading note",
+    "notFoundTitle": "Note not found",
+    "notFoundTopic": "Archive",
+    "notFoundMessage": "The requested note does not exist in the current post index.",
+    "readLabel": "Read"
+  },
+  "resources": [
+    {
+      "title": "Nanotransport Research Group",
+      "url": "https://kedarh.wixsite.com/nanotransport",
+      "description": "Official website of my PhD research group."
+    },
+    {
+      "title": "arXiv Daily AI4Mat",
+      "url": "https://ocean-jh.github.io/arXivDaily-AI4Mat/",
+      "description": "A personal project that curates recent arXiv papers related to AI for Materials Science."
+    }
+  ]
 }

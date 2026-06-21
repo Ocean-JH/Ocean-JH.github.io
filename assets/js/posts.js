@@ -1,9 +1,94 @@
-const POSTS_INDEX_URL = "/assets/data/posts.json";
+const SITE_CONFIG_URL = "/assets/data/site.json";
+const CONTENT_INDEX_URL = "/assets/data/content.json";
 const POSTS_CONTENT_URL = "/assets/data/post-content.json";
+const NEWS_CONTENT_URL = "/assets/data/news-content.json";
 const MARKED_URL = "https://cdn.jsdelivr.net/npm/marked/marked.min.js";
 const MATHJAX_URL = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js";
 
 const cleanText = (value) => (value || "").toString().trim();
+let currentLanguage = "en";
+
+function setText(selector, value) {
+  document.querySelectorAll(selector).forEach((node) => {
+    node.textContent = cleanText(value);
+  });
+}
+
+function setMetaContent(selector, value) {
+  const node = document.querySelector(selector);
+  if (node) {
+    node.content = cleanText(value);
+  }
+}
+
+function pageTitle(title, profileName) {
+  return [cleanText(title), cleanText(profileName)].filter(Boolean).join(" | ");
+}
+
+function applySiteConfig(config, content, page) {
+  const site = config.site || {};
+  const profile = config.profile || {};
+  const navigation = config.navigation || {};
+  const postsPage = config.postsPage || {};
+  const postPage = config.postPage || {};
+  const newsPage = config.newsPage || {};
+
+  currentLanguage = cleanText(site.language) || "en";
+  document.documentElement.lang = currentLanguage;
+  setText("[data-brand-mark]", site.brandMark);
+  setText('[data-profile="name"]', profile.name);
+  setText('[data-profile="location"]', profile.location);
+  setText("[data-nav-news]", navigation.news);
+  setText("[data-nav-research]", navigation.research);
+  setText("[data-nav-writing]", navigation.writing);
+  setMetaContent('meta[name="author"]', profile.name);
+
+  const brand = document.querySelector("[data-brand-link]");
+  if (brand) {
+    brand.setAttribute("aria-label", `${cleanText(profile.name)} homepage`.trim());
+  }
+
+  document.querySelectorAll("[data-nav-news]").forEach((node) => {
+    node.hidden = !Array.isArray(content.news) || !content.news.length;
+  });
+
+  if (page === "posts-index") {
+    document.title = pageTitle(postsPage.title, profile.name);
+    setMetaContent('meta[name="description"]', postsPage.description);
+    ["eyebrow", "heading", "introduction", "searchLabel", "archiveKicker", "archiveTitle"].forEach((key) => {
+      setText(`[data-posts-page="${key}"]`, postsPage[key]);
+    });
+
+    const toolbar = document.querySelector("[data-post-toolbar]");
+    if (toolbar) {
+      toolbar.setAttribute("aria-label", cleanText(postsPage.toolbarLabel));
+    }
+    const search = document.getElementById("post-search");
+    if (search) {
+      search.placeholder = cleanText(postsPage.searchPlaceholder);
+    }
+    const filter = document.getElementById("tag-filter");
+    if (filter) {
+      filter.setAttribute("aria-label", cleanText(postsPage.tagFilterLabel));
+    }
+  }
+
+  if (page === "post-reader") {
+    document.title = pageTitle(postPage.title, profile.name);
+    setMetaContent('meta[name="description"]', postPage.description);
+    setText('[data-post-page="backLabel"]', postPage.backLabel);
+    setText("#post-topic", postPage.defaultTopic);
+    setText("#post-title", postPage.loadingTitle);
+  }
+
+  if (page === "news-reader") {
+    document.title = pageTitle(newsPage.title, profile.name);
+    setMetaContent('meta[name="description"]', newsPage.description);
+    setText('[data-news-page="backLabel"]', newsPage.backLabel);
+    setText("#news-topic", newsPage.defaultTopic);
+    setText("#news-title", newsPage.loadingTitle);
+  }
+}
 
 function escapeHtml(value) {
   return cleanText(value)
@@ -28,7 +113,7 @@ function formatDate(value) {
   if (!year || !month || !day) {
     return cleanText(value);
   }
-  return new Intl.DateTimeFormat("en", {
+  return new Intl.DateTimeFormat(currentLanguage, {
     year: "numeric",
     month: "short",
     day: "numeric"
@@ -319,21 +404,23 @@ function postMatches(post, query, tag) {
     ...(post.tags || [])
   ].join(" ").toLowerCase();
   const matchesQuery = !query || haystack.includes(query.toLowerCase());
-  const matchesTag = !tag || tag === "All" || (post.tags || []).includes(tag);
+  const matchesTag = !tag || (post.tags || []).includes(tag);
   return matchesQuery && matchesTag;
 }
 
-function createTagButton(tag, activeTag, onClick) {
+function createTagButton(value, label, activeTag, onClick) {
   const button = document.createElement("button");
   button.className = "tag-button";
   button.type = "button";
-  button.textContent = tag;
-  button.setAttribute("aria-pressed", tag === activeTag ? "true" : "false");
-  button.addEventListener("click", () => onClick(tag));
+  button.textContent = label;
+  button.setAttribute("aria-pressed", value === activeTag ? "true" : "false");
+  button.addEventListener("click", () => onClick(value));
   return button;
 }
 
-function renderArchive(posts) {
+function renderArchive(posts, config) {
+  const postsPage = config.postsPage || {};
+  const postPage = config.postPage || {};
   const list = document.getElementById("post-list");
   const filter = document.getElementById("tag-filter");
   const search = document.getElementById("post-search");
@@ -341,8 +428,8 @@ function renderArchive(posts) {
     return;
   }
 
-  let activeTag = "All";
-  const tags = ["All", ...Array.from(new Set(posts.flatMap((post) => post.tags || []))).sort()];
+  let activeTag = "";
+  const tags = ["", ...Array.from(new Set(posts.flatMap((post) => post.tags || []))).sort()];
 
   const paint = () => {
     const query = search.value.trim();
@@ -352,7 +439,7 @@ function renderArchive(posts) {
     if (!filtered.length) {
       const empty = document.createElement("p");
       empty.className = "empty-state";
-      empty.textContent = "No notes match this filter.";
+      empty.textContent = cleanText(postsPage.emptyMessage);
       list.append(empty);
       return;
     }
@@ -362,7 +449,7 @@ function renderArchive(posts) {
       article.className = "post-archive-item";
       article.innerHTML = `
         <div>
-          <p class="section-kicker">${escapeHtml(post.topic || "Note")}</p>
+          <p class="section-kicker">${escapeHtml(post.topic || postPage.defaultTopic)}</p>
           <h3>${escapeHtml(post.title)}</h3>
           <p>${escapeHtml(post.description || "")}</p>
           <div class="item-meta">
@@ -370,7 +457,7 @@ function renderArchive(posts) {
             ${(post.tags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
           </div>
         </div>
-        <a class="post-card-link" href="${escapeHtml(post.url)}" aria-label="Read ${escapeHtml(post.title)}"></a>
+        <a class="post-card-link" href="${escapeHtml(post.url)}" aria-label="${escapeHtml(postPage.readLabel)} ${escapeHtml(post.title)}"></a>
       `;
       list.append(article);
     });
@@ -378,11 +465,16 @@ function renderArchive(posts) {
 
   const paintTags = () => {
     filter.replaceChildren();
-    tags.forEach((tag) => filter.append(createTagButton(tag, activeTag, (nextTag) => {
+    tags.forEach((tag) => filter.append(createTagButton(
+      tag,
+      tag || cleanText(postsPage.allTagsLabel),
+      activeTag,
+      (nextTag) => {
       activeTag = nextTag;
       paintTags();
       paint();
-    })));
+      }
+    )));
   };
 
   search.addEventListener("input", paint);
@@ -401,7 +493,9 @@ function showMissingAssets(container) {
   });
 }
 
-async function renderReader(posts) {
+async function renderReader(posts, config) {
+  const profile = config.profile || {};
+  const postPage = config.postPage || {};
   const slug = getPostSlug();
   const post = posts.find((item) => item.slug === slug);
   const title = document.getElementById("post-title");
@@ -414,16 +508,16 @@ async function renderReader(posts) {
   }
 
   if (!post) {
-    document.title = "Note not found | Wang Jianghai";
-    title.textContent = "Note not found";
-    topic.textContent = "Archive";
-    body.innerHTML = '<p class="empty-state">The requested note does not exist in the current post index.</p>';
+    document.title = pageTitle(postPage.notFoundTitle, profile.name);
+    title.textContent = cleanText(postPage.notFoundTitle);
+    topic.textContent = cleanText(postPage.notFoundTopic);
+    body.innerHTML = `<p class="empty-state">${escapeHtml(postPage.notFoundMessage)}</p>`;
     return;
   }
 
-  document.title = `${post.title} | Wang Jianghai`;
+  document.title = pageTitle(post.title, profile.name);
   title.textContent = post.title;
-  topic.textContent = post.topic || "Note";
+  topic.textContent = post.topic || cleanText(postPage.defaultTopic);
   meta.innerHTML = `
     <span>${escapeHtml(formatDate(post.date))}</span>
     ${(post.tags || []).map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
@@ -444,18 +538,79 @@ async function renderReader(posts) {
   }
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
+async function renderNewsReader(news, config) {
+  const profile = config.profile || {};
+  const newsPage = config.newsPage || {};
+  const slug = getPostSlug();
+  const item = news.find((entry) => entry.slug === slug);
+  const title = document.getElementById("news-title");
+  const topic = document.getElementById("news-topic");
+  const meta = document.getElementById("news-meta");
+  const image = document.getElementById("news-image");
+  const summary = document.getElementById("news-summary");
+  const body = document.getElementById("news-body");
+
+  if (!title || !topic || !meta || !image || !summary || !body) {
+    return;
+  }
+
+  if (!item) {
+    document.title = pageTitle(newsPage.notFoundTitle, profile.name);
+    title.textContent = cleanText(newsPage.notFoundTitle);
+    topic.textContent = cleanText(newsPage.notFoundTopic);
+    body.innerHTML = `<p class="empty-state">${escapeHtml(newsPage.notFoundMessage)}</p>`;
+    return;
+  }
+
+  document.title = pageTitle(item.title, profile.name);
+  title.textContent = item.title;
+  topic.textContent = cleanText(newsPage.defaultTopic);
+  meta.innerHTML = `<span>${escapeHtml(formatDate(item.date))}</span>`;
+  image.src = cleanText(item.image);
+  image.alt = cleanText(item.imageAlt);
+  image.hidden = !image.src;
+  summary.textContent = cleanText(item.description);
+  summary.hidden = !summary.textContent;
+  if (!image.hidden && image.parentElement) {
+    showMissingAssets(image.parentElement);
+  }
+
   try {
-    const posts = await fetchJson(POSTS_INDEX_URL);
-    const page = document.body.dataset.page;
-    if (page === "posts-index") {
-      renderArchive(posts);
-    }
-    if (page === "post-reader") {
-      renderReader(posts);
+    const contentBySlug = await fetchJson(NEWS_CONTENT_URL);
+    const markdown = await loadPostMarkdown(item, contentBySlug);
+    await ensureMarked();
+    body.innerHTML = renderMarkdown(markdown, item.title);
+    showMissingAssets(body);
+    await ensureMathJax();
+    if (window.MathJax && window.MathJax.typesetPromise) {
+      window.MathJax.typesetPromise([body]);
     }
   } catch (error) {
-    const target = document.getElementById("post-list") || document.getElementById("post-body");
+    body.innerHTML = `<p class="empty-state">${escapeHtml(error.message)}</p>`;
+  }
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const [config, content] = await Promise.all([
+      fetchJson(SITE_CONFIG_URL),
+      fetchJson(CONTENT_INDEX_URL)
+    ]);
+    const posts = Array.isArray(content.posts) ? content.posts : [];
+    const news = Array.isArray(content.news) ? content.news : [];
+    const page = document.body.dataset.page;
+    applySiteConfig(config, content, page);
+    if (page === "posts-index") {
+      renderArchive(posts, config);
+    }
+    if (page === "post-reader") {
+      renderReader(posts, config);
+    }
+    if (page === "news-reader") {
+      renderNewsReader(news, config);
+    }
+  } catch (error) {
+    const target = document.getElementById("post-list") || document.getElementById("post-body") || document.getElementById("news-body");
     if (target) {
       target.innerHTML = `<p class="empty-state">${escapeHtml(error.message)}</p>`;
     }

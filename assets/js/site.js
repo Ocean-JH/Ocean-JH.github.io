@@ -1,30 +1,65 @@
 const defaultSiteData = {
+  site: {
+    language: "en",
+    url: "",
+    title: "",
+    description: "",
+    socialDescription: "",
+    brandMark: ""
+  },
+  navigation: {
+    news: "",
+    research: "",
+    publications: "",
+    writing: ""
+  },
   profile: {
-    name: "Wang Jianghai",
-    nativeName: "王江海",
-    role: "PhD student in Computational Materials Science",
-    affiliation: "Nanyang Technological University",
-    location: "Singapore",
-    email: "jianghai001@e.ntu.edu.sg",
-    github: "Ocean-JH",
+    name: "",
+    nativeName: "",
+    role: "",
+    affiliation: "",
+    location: "",
+    email: "",
+    github: "",
+    linkedin: "",
+    orcid: "",
+    googleScholar: "",
     cvUrl: ""
   },
-  researchInterests: [
-    {
-      title: "Crystal structure prediction",
-      description: "Exploring metastable materials through global optimization, structural prototypes, and first-principles validation."
+  home: {
+    hero: {
+      eyebrow: "",
+      description: "",
+      socialAriaLabel: "",
+      researchMarkLabel: "",
+      researchMarkCaptions: []
     },
-    {
-      title: "First-principles workflows",
-      description: "Connecting electronic structure, phonons, elasticity, dielectric response, and transport calculations for materials discovery."
+    summary: {
+      kicker: "",
+      title: "",
+      description: ""
     },
-    {
-      title: "AI for materials",
-      description: "Using machine learning potentials and data-driven models to accelerate configuration-space exploration."
+    news: { kicker: "", title: "" },
+    research: { kicker: "", title: "" },
+    publications: { kicker: "", title: "" },
+    writing: {
+      kicker: "",
+      title: "",
+      archiveLabel: "",
+      archiveUrl: "/posts/",
+      homepageLimit: 6
     }
-  ],
+  },
+  postsPage: {},
+  postPage: {},
+  resources: []
+};
+
+const defaultContentData = {
+  news: [],
+  research: [],
   publications: [],
-  writing: []
+  posts: []
 };
 
 const text = (value) => (value || "").toString().trim();
@@ -35,9 +70,19 @@ function setText(selector, value) {
   });
 }
 
-function setHref(selector, href) {
+function setMetaContent(selector, value) {
+  const node = document.querySelector(selector);
+  if (node) {
+    node.content = text(value);
+  }
+}
+
+function updateOptionalLink(selector, href) {
   document.querySelectorAll(selector).forEach((node) => {
-    node.href = href;
+    node.hidden = !href;
+    if (href) {
+      node.href = href;
+    }
   });
 }
 
@@ -71,18 +116,65 @@ function doiUrl(doi) {
 }
 
 function mergeSiteData(data) {
+  const home = data.home || {};
   return {
     ...defaultSiteData,
     ...data,
+    site: {
+      ...defaultSiteData.site,
+      ...(data.site || {})
+    },
+    navigation: {
+      ...defaultSiteData.navigation,
+      ...(data.navigation || {})
+    },
     profile: {
       ...defaultSiteData.profile,
       ...(data.profile || {})
     },
-    researchInterests: Array.isArray(data.researchInterests)
-      ? data.researchInterests
-      : defaultSiteData.researchInterests,
-    publications: Array.isArray(data.publications) ? data.publications : [],
-    writing: Array.isArray(data.writing) ? data.writing : []
+    home: {
+      ...defaultSiteData.home,
+      ...home,
+      hero: {
+        ...defaultSiteData.home.hero,
+        ...(home.hero || {}),
+        researchMarkCaptions: Array.isArray(home.hero && home.hero.researchMarkCaptions)
+          ? home.hero.researchMarkCaptions
+          : []
+      },
+      summary: {
+        ...defaultSiteData.home.summary,
+        ...(home.summary || {})
+      },
+      news: {
+        ...defaultSiteData.home.news,
+        ...(home.news || {})
+      },
+      research: {
+        ...defaultSiteData.home.research,
+        ...(home.research || {})
+      },
+      publications: {
+        ...defaultSiteData.home.publications,
+        ...(home.publications || {})
+      },
+      writing: {
+        ...defaultSiteData.home.writing,
+        ...(home.writing || {})
+      },
+      resources: {
+        kicker: "",
+        title: "",
+        ...(home.resources || {})
+      }
+    },
+    postsPage: {
+      ...(data.postsPage || {})
+    },
+    postPage: {
+      ...(data.postPage || {})
+    },
+    resources: Array.isArray(data.resources) ? data.resources : []
   };
 }
 
@@ -99,17 +191,22 @@ async function loadSiteData() {
   }
 }
 
-async function loadPostsData() {
+async function loadContentData() {
   try {
-    const response = await fetch("/assets/data/posts.json", { cache: "no-store" });
+    const response = await fetch("/assets/data/content.json", { cache: "no-store" });
     if (!response.ok) {
-      throw new Error(`Unable to load posts data: ${response.status}`);
+      throw new Error(`Unable to load content data: ${response.status}`);
     }
-    const posts = await response.json();
-    return Array.isArray(posts) ? posts : [];
+    const data = await response.json();
+    return {
+      news: Array.isArray(data.news) ? data.news : [],
+      research: Array.isArray(data.research) ? data.research : [],
+      publications: Array.isArray(data.publications) ? data.publications : [],
+      posts: Array.isArray(data.posts) ? data.posts : []
+    };
   } catch (error) {
     console.warn(error.message);
-    return [];
+    return defaultContentData;
   }
 }
 
@@ -123,6 +220,93 @@ function postToWritingItem(post) {
   };
 }
 
+function formatDate(value) {
+  const parts = text(value).split("-").map(Number);
+  if (parts.length !== 3 || parts.some((part) => !part)) {
+    return text(value);
+  }
+  return new Intl.DateTimeFormat(document.documentElement.lang || "en", {
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  }).format(new Date(Date.UTC(parts[0], parts[1] - 1, parts[2])));
+}
+
+function updateSiteMetadata(site, profile) {
+  const language = text(site.language) || "en";
+  document.documentElement.lang = language;
+
+  if (text(site.title)) {
+    document.title = text(site.title);
+  }
+  setMetaContent('meta[name="description"]', site.description);
+  setMetaContent('meta[name="author"]', profile.name);
+  setMetaContent('meta[property="og:title"]', site.title);
+  setMetaContent('meta[property="og:description"]', site.socialDescription || site.description);
+  setMetaContent('meta[property="og:url"]', site.url);
+
+  setText("[data-brand-mark]", text(site.brandMark));
+  const brand = document.querySelector("[data-brand-link]");
+  if (brand) {
+    brand.setAttribute("aria-label", `${text(profile.name)} homepage`.trim());
+  }
+}
+
+function updateNavigation(navigation) {
+  setText("[data-nav-news]", text(navigation.news));
+  setText("[data-nav-research]", text(navigation.research));
+  setText("[data-nav-publications]", text(navigation.publications));
+  setText("[data-nav-writing]", text(navigation.writing));
+}
+
+function updateHomeCopy(home) {
+  const values = {
+    heroEyebrow: home.hero.eyebrow,
+    heroDescription: home.hero.description,
+    summaryKicker: home.summary.kicker,
+    summaryTitle: home.summary.title,
+    summaryDescription: home.summary.description,
+    newsKicker: home.news.kicker,
+    newsTitle: home.news.title,
+    researchKicker: home.research.kicker,
+    researchTitle: home.research.title,
+    publicationsKicker: home.publications.kicker,
+    publicationsTitle: home.publications.title,
+    writingKicker: home.writing.kicker,
+    writingTitle: home.writing.title,
+    resourcesKicker: home.resources.kicker,
+    resourcesTitle: home.resources.title
+  };
+
+  Object.entries(values).forEach(([key, value]) => {
+    setText(`[data-home="${key}"]`, text(value));
+  });
+
+  const socials = document.querySelector("[data-hero-socials]");
+  if (socials) {
+    socials.setAttribute("aria-label", text(home.hero.socialAriaLabel));
+  }
+
+  const researchMark = document.querySelector("[data-research-mark]");
+  if (researchMark) {
+    researchMark.setAttribute("aria-label", text(home.hero.researchMarkLabel));
+  }
+
+  const captions = document.getElementById("research-mark-caption");
+  if (captions) {
+    captions.replaceChildren();
+    home.hero.researchMarkCaptions.map(text).filter(Boolean).forEach((caption) => {
+      captions.append(createElement("span", "", caption));
+    });
+  }
+
+  const archiveLink = document.querySelector("[data-writing-archive-link]");
+  if (archiveLink) {
+    archiveLink.textContent = text(home.writing.archiveLabel);
+    archiveLink.href = text(home.writing.archiveUrl) || "/posts/";
+  }
+}
+
 function updateProfile(profile) {
   setText('[data-profile="name"]', text(profile.name));
   setText('[data-profile="nativeName"]', text(profile.nativeName));
@@ -131,16 +315,14 @@ function updateProfile(profile) {
   setText('[data-profile="location"]', text(profile.location));
 
   const email = text(profile.email);
-  if (email) {
-    setHref("[data-email-link]", `mailto:${email}`);
-    setText("[data-email-text]", email);
-  }
+  updateOptionalLink("[data-email-link]", email ? `mailto:${email}` : "");
 
   const github = text(profile.github);
-  if (github) {
-    setHref("[data-github-link]", `https://github.com/${github}`);
-    setText("[data-github-text]", `github.com/${github}`);
-  }
+  const githubUrl = github.startsWith("http") ? github : github ? `https://github.com/${github}` : "";
+  updateOptionalLink("[data-github-link]", githubUrl);
+  updateOptionalLink("[data-linkedin-link]", text(profile.linkedin));
+  updateOptionalLink("[data-orcid-link]", text(profile.orcid));
+  updateOptionalLink("[data-google-scholar-link]", text(profile.googleScholar));
 
   document.querySelectorAll("[data-cv-link]").forEach((node) => {
     const cvUrl = text(profile.cvUrl);
@@ -151,8 +333,59 @@ function updateProfile(profile) {
   });
 }
 
+function renderNews(items) {
+  const section = document.querySelector('[data-section="news"]');
+  const nav = document.querySelector("[data-nav-news]");
+  const list = document.getElementById("news-list");
+  if (!section || !list) {
+    return;
+  }
+
+  if (!items.length) {
+    section.hidden = true;
+    if (nav) {
+      nav.hidden = true;
+    }
+    return;
+  }
+
+  list.replaceChildren();
+  items.forEach((item) => {
+    const url = text(item.url);
+    const entry = createElement(url ? "a" : "article", url ? "news-item news-item-link" : "news-item");
+    if (url) {
+      entry.href = url;
+      entry.rel = "noopener";
+    }
+
+    const date = createElement("time", "news-date", formatDate(item.date));
+    if (text(item.date)) {
+      date.dateTime = text(item.date);
+    }
+
+    const content = createElement("div", "news-content");
+    content.append(createElement("h3", "", text(item.title)));
+    if (text(item.image)) {
+      const image = createElement("img", "news-image");
+      image.src = text(item.image);
+      image.alt = text(item.imageAlt);
+      image.loading = "lazy";
+      image.decoding = "async";
+      content.append(image);
+    }
+    entry.append(date, content);
+    list.append(entry);
+  });
+
+  section.hidden = false;
+  if (nav) {
+    nav.hidden = false;
+  }
+}
+
 function renderResearch(items) {
   const section = document.querySelector('[data-section="research"]');
+  const nav = document.querySelector("[data-nav-research]");
   const list = document.getElementById("research-list");
   if (!section || !list) {
     return;
@@ -160,12 +393,20 @@ function renderResearch(items) {
 
   if (!items.length) {
     section.hidden = true;
+    if (nav) {
+      nav.hidden = true;
+    }
     return;
   }
 
   list.replaceChildren();
   items.forEach((item) => {
-    const card = createElement("article", "interest-card");
+    const url = text(item.url);
+    const card = createElement(url ? "a" : "article", url ? "interest-card interest-card-link" : "interest-card");
+    if (url) {
+      card.href = url;
+      card.rel = "noopener";
+    }
     card.append(
       createElement("h3", "", text(item.title)),
       createElement("p", "", text(item.description))
@@ -173,6 +414,9 @@ function renderResearch(items) {
     list.append(card);
   });
   section.hidden = false;
+  if (nav) {
+    nav.hidden = false;
+  }
 }
 
 function renderPublications(items) {
@@ -287,13 +531,47 @@ function renderWriting(items, showArchiveLink = false) {
   }
 }
 
+function renderResources(items) {
+  const section = document.querySelector('[data-section="resources"]');
+  const list = document.getElementById("resource-list");
+  if (!section || !list) {
+    return;
+  }
+
+  if (!items.length) {
+    section.hidden = true;
+    return;
+  }
+
+  list.replaceChildren();
+  items.forEach((item) => {
+    const url = text(item.url);
+    const card = createElement(url ? "a" : "article", "resource-card");
+    if (url) {
+      card.href = url;
+      card.rel = "noopener";
+    }
+    card.append(
+      createElement("h3", "", text(item.title)),
+      createElement("p", "", text(item.description))
+    );
+    list.append(card);
+  });
+  section.hidden = false;
+}
+
 document.addEventListener("DOMContentLoaded", async () => {
-  const [siteData, posts] = await Promise.all([loadSiteData(), loadPostsData()]);
+  const [siteData, contentData] = await Promise.all([loadSiteData(), loadContentData()]);
+  updateSiteMetadata(siteData.site, siteData.profile);
+  updateNavigation(siteData.navigation);
   updateProfile(siteData.profile);
-  renderResearch(siteData.researchInterests);
-  renderPublications(siteData.publications);
-  const writingItems = siteData.writing.length
-    ? siteData.writing
-    : posts.slice(0, 6).map(postToWritingItem);
-  renderWriting(writingItems, posts.length > 0);
+  updateHomeCopy(siteData.home);
+  renderNews(contentData.news);
+  renderResearch(contentData.research);
+  renderPublications(contentData.publications);
+  const configuredLimit = Number(siteData.home.writing.homepageLimit);
+  const homepageLimit = Number.isFinite(configuredLimit) && configuredLimit > 0 ? configuredLimit : 6;
+  const writingItems = contentData.posts.slice(0, homepageLimit).map(postToWritingItem);
+  renderWriting(writingItems, contentData.posts.length > 0 && Boolean(text(siteData.home.writing.archiveUrl)));
+  renderResources(siteData.resources);
 });

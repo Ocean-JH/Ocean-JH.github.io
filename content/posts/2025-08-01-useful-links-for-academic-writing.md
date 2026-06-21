@@ -2,9 +2,9 @@
 title: 'Useful Links for Academic Writing'
 date: 2025-08-01
 tags:
-
   - Academic Writing
----# Useful Links for Academic Writing
+---
+# Useful Links for Academic Writing
 
 1. [Online Writing Lab (OWL)](https://owl.purdue.edu/)
 2. [Writing@CSU (Colorado State University)](https://writing.colostate.edu/learn.cfm)
