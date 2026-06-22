@@ -10,6 +10,16 @@
       "imageAlt": "Illustration of a crystal lattice transitioning into a materials science data network",
       "source": "/content/news/2026-06-21-demo-news-with-image.md",
       "url": "/news/news.html?slug=demo-news-with-image"
+    },
+    {
+      "title": "Poster Second Prize at AI4X-Accelerate 2026",
+      "slug": "ai4x-accelerate-2026-poster-second-prize",
+      "date": "2026-06-18",
+      "description": "I attended AI4X-Accelerate 2026 and received second prize for my poster presentation.",
+      "image": "/assets/images/news/2026-06-18-ai4x-poster.jpeg",
+      "imageAlt": "Wang Jianghai standing beside his research poster at AI4X-Accelerate 2026",
+      "source": "/content/news/2026-06-18-ai4x-accelerate-2026-poster-second-prize.md",
+      "url": "/news/news.html?slug=ai4x-accelerate-2026-poster-second-prize"
     }
   ],
   "research": [
@@ -28,18 +38,6 @@
   ],
   "publications": [],
   "posts": [
-    {
-      "title": "Example Post",
-      "slug": "example-post",
-      "date": "2026-06-21",
-      "topic": "Research",
-      "tags": [
-        "AI for Materials"
-      ],
-      "description": "Short homepage and archive summary.",
-      "source": "/content/posts/2026-06-21-example-post.md",
-      "url": "/posts/post.html?slug=example-post"
-    },
     {
       "title": "Useful Links for Academic Writing",
       "slug": "useful-links-for-academic-writing",
