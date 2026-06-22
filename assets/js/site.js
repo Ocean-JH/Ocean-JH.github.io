@@ -365,15 +365,17 @@ function renderNews(items) {
 
     const content = createElement("div", "news-content");
     content.append(createElement("h3", "", text(item.title)));
+    entry.append(date, content);
+
     if (text(item.image)) {
+      entry.classList.add("news-item-has-image");
       const image = createElement("img", "news-image");
       image.src = text(item.image);
       image.alt = text(item.imageAlt);
       image.loading = "lazy";
       image.decoding = "async";
-      content.append(image);
+      entry.append(image);
     }
-    entry.append(date, content);
     list.append(entry);
   });
 

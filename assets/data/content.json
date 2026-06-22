@@ -2,16 +2,6 @@
   "schemaVersion": 1,
   "news": [
     {
-      "title": "Demo: Publishing News with an Image",
-      "slug": "demo-news-with-image",
-      "date": "2026-06-21",
-      "description": "A complete example showing the homepage image, date, title, and Markdown detail page workflow.",
-      "image": "/assets/images/news/2026-06-21-demo-news.png",
-      "imageAlt": "Illustration of a crystal lattice transitioning into a materials science data network",
-      "source": "/content/news/2026-06-21-demo-news-with-image.md",
-      "url": "/news/news.html?slug=demo-news-with-image"
-    },
-    {
       "title": "Poster Second Prize at AI4X-Accelerate 2026",
       "slug": "ai4x-accelerate-2026-poster-second-prize",
       "date": "2026-06-18",
