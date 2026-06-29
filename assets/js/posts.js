@@ -8,6 +8,27 @@ const MATHJAX_URL = "https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js";
 const cleanText = (value) => (value || "").toString().trim();
 let currentLanguage = "en";
 
+function installGoogleAnalytics(config) {
+  const analytics = config.analytics || {};
+  const measurementId = cleanText(analytics.googleAnalyticsId);
+  if (!/^G-[A-Z0-9]+$/i.test(measurementId) || window.__googleAnalyticsId === measurementId) {
+    return;
+  }
+
+  window.__googleAnalyticsId = measurementId;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function gtag() {
+    window.dataLayer.push(arguments);
+  };
+  window.gtag("js", new Date());
+  window.gtag("config", measurementId);
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+  document.head.append(script);
+}
+
 function setText(selector, value) {
   document.querySelectorAll(selector).forEach((node) => {
     node.textContent = cleanText(value);
@@ -599,6 +620,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const posts = Array.isArray(content.posts) ? content.posts : [];
     const news = Array.isArray(content.news) ? content.news : [];
     const page = document.body.dataset.page;
+    installGoogleAnalytics(config);
     applySiteConfig(config, content, page);
     if (page === "posts-index") {
       renderArchive(posts, config);

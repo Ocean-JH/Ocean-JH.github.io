@@ -7,6 +7,9 @@ const defaultSiteData = {
     socialDescription: "",
     brandMark: ""
   },
+  analytics: {
+    googleAnalyticsId: ""
+  },
   navigation: {
     news: "",
     research: "",
@@ -123,6 +126,10 @@ function mergeSiteData(data) {
     site: {
       ...defaultSiteData.site,
       ...(data.site || {})
+    },
+    analytics: {
+      ...defaultSiteData.analytics,
+      ...(data.analytics || {})
     },
     navigation: {
       ...defaultSiteData.navigation,
@@ -250,6 +257,26 @@ function updateSiteMetadata(site, profile) {
   if (brand) {
     brand.setAttribute("aria-label", `${text(profile.name)} homepage`.trim());
   }
+}
+
+function installGoogleAnalytics(analytics) {
+  const measurementId = text(analytics && analytics.googleAnalyticsId);
+  if (!/^G-[A-Z0-9]+$/i.test(measurementId) || window.__googleAnalyticsId === measurementId) {
+    return;
+  }
+
+  window.__googleAnalyticsId = measurementId;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function gtag() {
+    window.dataLayer.push(arguments);
+  };
+  window.gtag("js", new Date());
+  window.gtag("config", measurementId);
+
+  const script = document.createElement("script");
+  script.async = true;
+  script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(measurementId)}`;
+  document.head.append(script);
 }
 
 function updateNavigation(navigation) {
@@ -564,6 +591,7 @@ function renderResources(items) {
 
 document.addEventListener("DOMContentLoaded", async () => {
   const [siteData, contentData] = await Promise.all([loadSiteData(), loadContentData()]);
+  installGoogleAnalytics(siteData.analytics);
   updateSiteMetadata(siteData.site, siteData.profile);
   updateNavigation(siteData.navigation);
   updateProfile(siteData.profile);
