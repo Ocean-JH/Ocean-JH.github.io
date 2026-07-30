@@ -2,6 +2,16 @@
   "schemaVersion": 1,
   "news": [
     {
+      "title": "Oral Presentation at the Chinese Materials Conference 2026",
+      "slug": "chinese-materials-conference-2026-oral-presentation",
+      "date": "2026-07-16",
+      "description": "I attended the Chinese Materials Conference 2026 and gave an oral presentation.",
+      "image": "/assets/images/news/2026-07-16-cmc2026-presentation.jpeg",
+      "imageAlt": "Wang Jianghai giving an oral presentation at the Chinese Materials Conference 2026",
+      "source": "/content/news/2026-07-16-chinese-materials-conference-2026-oral-presentation.md",
+      "url": "/news/news.html?slug=chinese-materials-conference-2026-oral-presentation"
+    },
+    {
       "title": "Poster Second Prize at AI4X-Accelerate 2026",
       "slug": "ai4x-accelerate-2026-poster-second-prize",
       "date": "2026-06-18",
