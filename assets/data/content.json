@@ -24,16 +24,16 @@
   ],
   "research": [
     {
-      "title": "Crystal structure prediction",
-      "description": "Exploring metastable materials through global optimization, structural prototypes, and first-principles validation."
+      "title": "AI for science",
+      "description": "Accelerate discovery and model complex physical systems."
     },
     {
-      "title": "First-principles workflows",
-      "description": "Connecting electronic structure, phonons, elasticity, dielectric response, and transport calculations for materials discovery."
+      "title": "Materials discovery",
+      "description": "Identify promising materials for specific applications."
     },
     {
-      "title": "AI for materials",
-      "description": "Using machine learning potentials and data-driven models to accelerate configuration-space exploration."
+      "title": "Generative design",
+      "description": "Create novel materials with tailored properties."
     }
   ],
   "publications": [],
