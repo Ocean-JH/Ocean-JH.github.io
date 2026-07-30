@@ -19,6 +19,8 @@ const defaultSiteData = {
   profile: {
     name: "",
     nativeName: "",
+    portrait: "",
+    portraitAlt: "",
     role: "",
     affiliation: "",
     location: "",
@@ -33,9 +35,7 @@ const defaultSiteData = {
     hero: {
       eyebrow: "",
       description: "",
-      socialAriaLabel: "",
-      researchMarkLabel: "",
-      researchMarkCaptions: []
+      socialAriaLabel: ""
     },
     summary: {
       kicker: "",
@@ -144,10 +144,7 @@ function mergeSiteData(data) {
       ...home,
       hero: {
         ...defaultSiteData.home.hero,
-        ...(home.hero || {}),
-        researchMarkCaptions: Array.isArray(home.hero && home.hero.researchMarkCaptions)
-          ? home.hero.researchMarkCaptions
-          : []
+        ...(home.hero || {})
       },
       summary: {
         ...defaultSiteData.home.summary,
@@ -314,19 +311,6 @@ function updateHomeCopy(home) {
     socials.setAttribute("aria-label", text(home.hero.socialAriaLabel));
   }
 
-  const researchMark = document.querySelector("[data-research-mark]");
-  if (researchMark) {
-    researchMark.setAttribute("aria-label", text(home.hero.researchMarkLabel));
-  }
-
-  const captions = document.getElementById("research-mark-caption");
-  if (captions) {
-    captions.replaceChildren();
-    home.hero.researchMarkCaptions.map(text).filter(Boolean).forEach((caption) => {
-      captions.append(createElement("span", "", caption));
-    });
-  }
-
   const archiveLink = document.querySelector("[data-writing-archive-link]");
   if (archiveLink) {
     archiveLink.textContent = text(home.writing.archiveLabel);
@@ -340,6 +324,20 @@ function updateProfile(profile) {
   setText('[data-profile="role"]', text(profile.role));
   setText('[data-profile="affiliation"]', text(profile.affiliation));
   setText('[data-profile="location"]', text(profile.location));
+
+  const portrait = document.querySelector("[data-profile-portrait]");
+  const portraitImage = document.querySelector("[data-profile-image]");
+  const portraitUrl = text(profile.portrait);
+  if (portrait && portraitImage) {
+    portrait.hidden = !portraitUrl;
+    if (portraitUrl) {
+      portraitImage.src = portraitUrl;
+      portraitImage.alt = text(profile.portraitAlt) || `Portrait of ${text(profile.name)}`;
+    } else {
+      portraitImage.removeAttribute("src");
+      portraitImage.alt = "";
+    }
+  }
 
   const email = text(profile.email);
   updateOptionalLink("[data-email-link]", email ? `mailto:${email}` : "");

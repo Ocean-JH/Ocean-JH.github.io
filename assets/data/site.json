@@ -19,6 +19,8 @@
   "profile": {
     "name": "Wang Jianghai",
     "nativeName": "王江海",
+    "portrait": "/assets/images/profile/portrait.jpeg",
+    "portraitAlt": "Portrait of Wang Jianghai by the waterfront",
     "role": "PhD student in Computational Materials Science",
     "affiliation": "Nanyang Technological University",
     "location": "Singapore",
@@ -33,13 +35,7 @@
     "hero": {
       "eyebrow": "Computational Materials Science",
       "description": "PhD student in Computational Materials Science at Nanyang Technological University, working on crystal structure prediction, first-principles workflows, and AI-accelerated materials discovery.",
-      "socialAriaLabel": "Contact and academic profiles",
-      "researchMarkLabel": "Research focus mark",
-      "researchMarkCaptions": [
-        "Structure",
-        "Electronic Response",
-        "Learning Potentials"
-      ]
+      "socialAriaLabel": "Contact and academic profiles"
     },
     "summary": {
       "kicker": "Profile",
